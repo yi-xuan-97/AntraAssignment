@@ -1,0 +1,236 @@
+--Batch directives
+--TO select a database
+USE Northwind
+GO
+
+--SELECT statement
+--Avoid/Never use SELECT *
+--Unnecessary data: retrieving unnecessary data
+--Name conflicts: join statement
+/*
+SELECT * FROM Employees
+SELECT * FROM Customers
+SELECT * FROM Employees e JOIN Orders o ON e.EmployeeID=o.EmployeeID JOIN Customers c ON o.CustomerID=c.CustomerID
+*/
+
+SELECT CustomerID, ContactName
+FROM Customers
+
+SELECT e.FirstName, e.LastName, e.Address
+FROM Employees AS e
+
+--DISTINCT keywords
+--Without distinct keyword, there will be reducndant info
+SELECT DISTINCT City
+FROM Employees
+
+--Combine with plain text
+SELECT FirstName + ' ' + LastName AS FullName
+FROM Employees
+
+--Identifier
+/*
+Regular identifier
+1.first character: a-z, A-Z, @, #
+    @:Delcare vaiable
+        DECLARE @today DATETIME
+        SELECT @today = GETDATE()
+        PRINT @today
+    #:temp tables
+        #:local temp table
+        ##: global temp table
+2.subsequent characters: a-z, 0-9, @, $, #, _
+3.identifier should not be a sql reserved word both uppercase or lowercase
+4.embedded space are not allowered - e.g. space within name: Full Name
+Delimited identifier: [] ""
+SELECT FirstName + ' ' + LastName AS "Full Name"
+FROM Employees
+SELECT *
+FROM [Order Details] -- what is this!!!!???
+*/
+
+--WHERE statement: fillter records
+--equality, inequality
+SELECT CustomerID,ContactName,Country
+FROM Customers
+WHERE Country='UK'
+
+SELECT ProductID,ProductName,UnitPrice
+FROM Products
+WHERE UnitPrice=18
+
+--two ways of inequality
+SELECT CustomerID,ContactName,Country
+FROM Customers
+WHERE Country!='UK'
+
+SELECT CustomerID,ContactName,Country
+FROM Customers
+WHERE Country<>'UK'
+
+--IN operator:
+SELECT OrderID,CustomerID, ShipCountry
+FROM Orders
+WHERE ShipCountry='USA' OR ShipCountry='UK'
+
+SELECT OrderID,CustomerID, ShipCountry
+FROM Orders
+WHERE ShipCountry IN ('USA','UK')
+
+
+
+--Between Operator
+SELECT ProductName,UnitPrice
+FROM Products
+WHERE UnitPrice BETWEEN 20 AND 30
+
+
+--NOT Operator
+SELECT OrderID,CustomerID, ShipCountry
+FROM Orders
+WHERE ShipCountry NOT IN ('USA','UK')
+
+SELECT OrderID,CustomerID, ShipCountry
+FROM Orders
+WHERE NOT ShipCountry IN ('USA','UK')
+
+SELECT ProductName,UnitPrice
+FROM Products
+WHERE UnitPrice NOT BETWEEN 20 AND 30
+
+--Null value: a field with no value
+SELECT EmployeeID,FirstName, LastName, Region
+FROM Employees
+WHERE Region IS NOT NULL
+
+--Create table with null value
+CREATE TABLE TestSalary(EId int primary key identity(1,1),Salary money, Comm money)
+Insert INTO TestSalary VALUES(2000,500),(2000,NULL),(NULL,NULL),(500,NULL),(1000,1000)
+
+SELECT * FROM TestSalary
+
+SELECT EID, Salary, Salary+Comm AS TotalComm
+FROM TestSalary
+
+--what does is null do? does it change all null to a certain number?
+SELECT EID, ISNULL(Salary,0) + ISNULL(Comm,0) AS TotalComm
+From TestSalary
+
+--LIKE Operator
+--Work with % wildcard characterm: is used to subsitued to 0 ormore character
+SELECT FirstName,LastName
+FROM Employees
+WHERE LastName LIKE 'D%'
+
+--Like with [] % to search in range
+--In this case, first char should be 0-3 and then anything follow after
+SELECT ContactName, PostalCode
+FROM Customers
+WHERE PostalCode LIKE '[0-3]%'
+
+--Work with NOT
+SELECT ContactName, PostalCode
+FROM Customers
+WHERE PostalCode NOT LIKE '[0-3]%'
+
+--Work with ^: any character that are not in the brackets
+SELECT ContactName, PostalCode
+FROM Customers
+WHERE PostalCode LIKE '[^0-3]%'
+
+SELECT ContactName, PostalCode
+FROM Customers
+WHERE ContactName LIKE 'A[^l-n][r-z]%'
+
+--ORDER BY statement: sort result set in asccending or descending order
+SELECT ContactName,City
+FROM Customers
+WHERE City != 'Boston'
+ORDER BY ContactName DESC
+
+SELECT ProductName, UnitPrice
+FROM Products
+ORDER BY UnitPrice DESC
+
+SELECT ProductName, UnitPrice
+FROM Products
+ORDER BY UnitPrice DESC, ProductName DESC
+
+SELECT ProductName, UnitPrice
+FROM Products
+ORDER BY 2 DESC, 1 DESC
+
+--JOIN: is used to bombine rows from two or more tables based on related columbetween them
+--INNER JOIN: return reocrds that have matching values only
+--Natural join
+
+SELECT  e.LastName,e.FirstName,o.OrderDate
+FROM Employees AS e
+INNER JOIN Orders AS o
+ON e.EmployeeID=o.EmployeeID
+
+--Avoid this, work fine but unreadable
+SELECT  e.LastName,e.FirstName,o.OrderDate
+FROM Employees AS e, Orders AS o
+WHERE e.EmployeeID=o.EmployeeID
+
+SELECT c.ContactName, e.FirstName+' '+e.LastName AS FullName, o.OrderDate
+FROM Customers c INNER JOIN Orders o ON c.CustomerID=o.CustomerID INNER JOIN Employees e ON e.EmployeeID=o.EmployeeID
+
+
+SELECT c.ContactName, e.FirstName+' '+e.LastName AS FullName, o.OrderDate, od.Quantity,od.UnitPrice
+FROM Customers c INNER JOIN Orders o ON c.CustomerID=o.CustomerID INNER JOIN Employees e ON e.EmployeeID=o.EmployeeID 
+INNER JOIN [Order Details] AS od ON od.OrderID=o.OrderID
+
+--OTTER JOIN
+--LEFT OTTER JOIN:
+SELECT c.ContactName, o.OrderID
+FROM Customers c LEFT JOIN Orders o ON c.CustomerID=o.CustomerID
+ORDER BY o.OrderID DESC
+
+--find customers that never place an order
+SELECT c.ContactName, o.OrderID
+FROM Customers c LEFT JOIN Orders o ON c.CustomerID=o.CustomerID
+WHERE o.OrderID IS NULL
+ORDER BY o.OrderID DESC
+
+
+--RIGHT OTTER JOIN
+--list all customers whether they have made any purchase or not
+SELECT c.ContactName, o.OrderID
+FROM Orders o RIGHT JOIN Customers c ON o.CustomerID=c.CustomerID
+ORDER BY o.OrderID DESC
+
+
+--LEFT JOIN AND RIGHT JOIN -- Order matters!!!!!!!!
+
+
+--FULL OTTER JOIN
+SELECT C.ContactName AS Customer, C.Country AS CustomerCountry, s.ContactName AS Supplier
+FROM Customers C FULL JOIN Suppliers S ON C.Country=S.Country
+
+
+--CROSS JOIN
+SELECT *
+FROM Customers CROSS JOIN Orders
+
+
+--SELF JOIN
+SELECT EmployeeID, FirstName, LastName, ReportsTo
+FROM Employees
+
+--Find employees with thier manager name
+SELECT E.FirstName+' '+E.LastName, M.FirstName+' '+M.LastName
+FROM Employees E INNER JOIN Employees M ON E.ReportsTo=M.EmployeeID
+
+SELECT E.FirstName+' '+E.LastName, M.FirstName+' '+M.LastName
+FROM Employees E LEFT JOIN Employees M ON E.ReportsTo=M.EmployeeID
+
+--Batch directives
+CREATE DATABASE FebBatch
+GO
+USE FebBatch
+GO
+Create TABLE EMPLOYEE(ID int, ENAME VARCHAR(20), Salary money)
+
+
