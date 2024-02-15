@@ -1,0 +1,319 @@
+--aggregation function + group by
+--subquery
+--union vs. union all
+--window function (SELECT,ORDER BY)
+--cte (UNION ALL) -heiarchy related table
+
+--temp table: sepcial type oof table to store data tempoarayly
+--Do not need to memories syntax
+--local temp table #
+
+CREATE TABLE #LocalTemp(
+    Num INT
+)
+DECLARE @Variable INT = 1
+WHILE(@Variable<=10)
+BEGIN
+INSERT INTO #LocalTemp(Num) VALUES(@Variable)
+SET @Variable = @Variable + 1
+END
+
+SELECT *
+FROM #LocalTemp
+
+SELECT *
+FROM tempdb.sys.tables
+
+--global temp table ##
+
+CREATE TABLE ##GlobalTemp(
+    Num INT
+)
+DECLARE @Variable2 INT = 1
+WHILE(@Variable2<=10)
+BEGIN
+INSERT INTO ##GlobalTemp(Num) VALUES(@Variable2)
+SET @Variable2 = @Variable2 + 1
+END
+
+SELECT *
+FROM ##GlobalTemp
+
+SELECT *
+FROM tempdb.sys.tables
+
+--table variable: type of variable which is of table type
+
+declare @today DATETIME
+SELECT @today = GETDATE()
+PRINT @today
+
+DECLARE @WeekDay TABLE(
+    DayNum INT,
+    DayAbb VARCHAR(20),
+    WeekName VARCHAR(20)
+)
+INSERT INTO @WeekDay
+VALUES
+(1, 'Mon', 'Monday'),
+(2, 'Tues', 'Tuesday'),
+(3, 'Wed', 'Wednesday'),
+(4, 'Thurs', 'Thursday'),
+(5, 'Fri', 'Friday'),
+(6, 'Sat', 'Saturday'),
+(7, 'Sun', 'Sunday')
+
+SELECT *
+FROM @WeekDay
+
+--temp table vs. table variables
+/*
+1.Both are stored in tempdb database
+2.scope: local/global, table variable: current batch
+3.size:>100 rows, go with temp tables. <100, go with table variables
+4.do not use temp table in sp(store procedure) or udf(user deine functions) but we can use table varuables in sp or udf
+*/
+
+--view: virtual table that contains data from one or multipe tables
+USE FebBatch
+GO
+
+SELECT *
+FROM EMPLOYEE
+
+INSERT INTO EMPLOYEE
+VALUES (1,'Fred',5000),(2,'Laura',2000),(3,'Amy',3000)
+
+UPDATE EMPLOYEE
+SET Salary = 5000
+WHERE ENAME='Fred'
+
+-- CREATE VIEW vwEmp
+-- AS
+-- SELECT ID, ENAME, Salary
+-- FROM EMPLOYEE
+
+-- SELECT *
+-- FROM vwEmp
+
+
+--stored procedure: a prepared sql query that we cans ave in our db and reuse whenever we want to 
+--life scopre: stay there as long as you don't drop it
+BEGIN
+PRINT 'HELLO'
+END
+
+-- CREATE PROC spHello
+-- AS
+-- BEGIN
+-- PRINT 'HELLO'
+-- END
+
+-- EXEC spHello
+
+
+--SQL injection: hackers inject somme malicious code to our sql queries thus destroying our database
+
+-- SELECT Id, Name
+-- FROM User
+-- WHERE Id = 1 UNION SELECT Id, password From User
+-- WHERE Id = 1 OR 1=1
+-- WHERE Id = 1 DROP TABLE User
+
+--input
+-- CREATE PROC spAddNumbers
+-- @a int,
+-- @b int
+-- AS
+-- BEGIN
+--     PRINT @a * @b
+-- END
+
+-- EXEC spAddNumbers 10,20
+
+--output
+-- CREATE PROC spGetName
+-- @id int,
+-- @EName VARCHAR(20) OUT
+-- AS
+-- BEGIN
+--     SELECT @EName = ENAME
+--     FROM EMPLOYEE
+--     WHERE ID = @id
+-- END
+
+-- BEGIN
+--     DECLARE @en VARCHAR(20)
+--     EXEC spGetName 1, @en OUT
+--     PRINT @en
+-- END
+
+
+
+-- CREATE PROC spGetAllEmp
+-- AS
+-- BEGIN
+--     SELECT *
+--     FROM EMPLOYEE
+-- END
+
+-- EXEC spGetAllEmp
+
+
+--Trigger
+--DML trigger
+--DDL trigger
+--LogOn trigger
+
+
+--Function
+USE Northwind
+GO
+
+CREATE FUNCTION GetTotalRevenue(@price money, @discount real, @quality smallint)
+returns money
+AS
+BEGIN
+    DECLARE @revenue money
+    SET @revenue = @price * (1-@discount) * @quality
+    RETURN @revenue
+END
+
+
+-- SELECT UnitPrice, Quantity, Discount, dbo.GetToTalRevenue
+-- FROM [Order Details]
+
+
+GO
+
+CREATE FUNCTION ExpensiveProduct(@threshold money)
+RETURNS TABLE
+AS
+RETURN SELECT *
+    FROM Products
+    WHERE UnitPrice>@threshold
+
+SELECT *
+FROM dbo.ExpensiveProduct(10)
+
+--sp vs. udf
+/*
+1.usuage: sp for DML, udf for calculations
+2.How to call: sp will be called by its name but functions must be used in sql statements
+3.input/output:sp may or may not have input/output, but for function, may or may not have input but must have output
+4.sp can call function but function can not call sp
+*/
+
+
+--pagination
+--OFFSET:skip
+--FETCH NEXT xx ROWS: select
+
+SELECT CustomerID, ContactName, City
+FROM Customers
+ORDER BY CustomerID
+OFFSET 10 ROWS
+FETCH NEXT 10 ROWS ONLY
+
+--TOP: use it with or without order by
+--OFFSET and FETCH NEXT: use only with order by
+
+-- DECLARE @PageNum INT
+-- DECLARE @RowsOfPage INT
+-- set @PageNum=2
+-- set @RowsOfPage=10
+-- SELECT CustomerID, ContactName, City
+-- FROM Customers
+-- ORDER BY CustomerID
+-- OFFSET (@PageNum-1) * @RowsOfPage ROWS
+-- FETCH NEXT @RowsOfPage ROWS ONLY
+
+
+DECLARE @PageNum INT
+DECLARE @RowsOfPage INT
+DECLARE @MaxTablePage FLOAT
+set @PageNum=1
+set @RowsOfPage=10
+SELECT @MaxTablePage=COUNT(*) FROM Customers
+SET @MaxTablePage = CEILING(@MaxTablePage/@RowsOfPage)
+WHILE @PageNum<=@MaxTablePage
+BEGIN
+    SELECT CustomerID, ContactName, City
+    FROM Customers
+    ORDER BY CustomerID
+    OFFSET (@PageNum-1) * @RowsOfPage ROWS
+    FETCH NEXT @RowsOfPage ROWS ONLY
+    SET @PageNum = @PageNum+1
+END
+
+SELECT(91.0/10)
+
+--Normalization
+--one to many relationship
+/*
+e.g. employee table and department table
+add departmentId as the foreign key into the employee table
+*/
+
+--many to many relationship
+/*
+e.g. student table and class table
+create a conjunction table in between
+*/
+
+--Constraints
+USE FebBatch
+GO
+
+DROP TABLE EMPLOYEE
+
+CREATE TABLE EMPLOYEE(
+    ID INT,
+    EName VARCHAR(20),
+    AGE INT
+)
+
+INSERT INTO EMPLOYEE VALUES(1,'Sam',34)
+INSERT INTO EMPLOYEE VALUES(NULL,'Linda',55)
+INSERT INTO EMPLOYEE VALUES(NULL, NULL, NULL)
+
+SELECT *
+FROM EMPLOYEE
+
+DROP TABLE EMPLOYEE
+
+CREATE TABLE EMPLOYEE(
+    ID INT NOT NULL UNIQUE,
+    EName VARCHAR(20),
+    AGE INT
+)
+
+DROP TABLE EMPLOYEE
+
+CREATE TABLE EMPLOYEE(
+    ID INT PRIMARY KEY,
+    EName VARCHAR(20),
+    AGE INT
+)
+
+--primary keys vs. unique contastraint
+
+
+/*
+1. unique constraint can accpet one and only one null value but pk can not accept any null value
+2. one table can have multiple unique keys but only one pk
+3. primary key will sort the data by defaul but unique key will not
+4. pk will by default create a clustered inex but unique key will create non clustered index
+*/
+
+
+
+
+
+
+
+
+
+
+
+
