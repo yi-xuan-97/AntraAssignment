@@ -1,0 +1,327 @@
+--Select: retrieve
+--Where: filter
+--Orderby:bsort
+--Join: work on multiple tables in one query
+
+
+--Aggregation function
+--COUNT(): return number of the rows
+
+SELECT COUNT(OrderID) AS TotalNum
+FROM Orders
+
+SELECT COUNT(*) AS TotalNum
+FROM Orders
+
+
+--COUNT(*) vs COUNT(colName)
+--(*) will include null values, while (colName) does not
+--example:
+
+SELECT FirstName,Region
+FROM Employees
+
+SELECT COUNT(Region), COUNT(*)
+FROM Employees
+
+
+--GROUP BY: group rows that have same values into summary rows
+--Find total number of order placed by each customers
+SELECT C.CustomerID, C.ContactName, C.City, C.Country, COUNT(O.OrderID) AS Nums
+FROM Customers C JOIN Orders O ON C.CustomerID=O.CustomerID
+GROUP BY C.CustomerID, C.ContactName, C.City, C.Country
+ORDER BY Nums DESC
+
+--Located in usa and canada, having order number larger or equal to 10
+SELECT C.CustomerID, C.ContactName, C.City, C.Country, COUNT(O.OrderID) AS Nums
+FROM Customers C JOIN Orders O ON C.CustomerID=O.CustomerID
+WHERE C.Country IN ('USA','Canda')
+GROUP BY C.CustomerID, C.ContactName, C.City, C.Country
+HAVING COUNT(O.OrderID) >= 10
+ORDER BY Nums DESC
+
+--WHERE vs. HAVING
+--1.both are used as filters
+    --HAVING will apply only to groups as whole
+    --WHERE is applied to an individual row
+--2.WHERE goes before aggregation but HAVING goes after aggregation
+--3.WHERE can be used with SELECCT, UPDATE or DELETE, HAVING can only be used in SELECT
+
+/*
+SELECT fields, aggregate(field)
+FROM table1 JOIN table2 ON ...
+WHERE criteria -- optional
+GROUP BY fields -- use when we have both aggregated and non-aggregated fields
+HAVING criteria -- optional
+ORDER BY field(s) DESC -- optional
+*/
+
+/*
+How statement being exxcute:
+FROM/JOIN ---> WHERE ---> GROUP BY ----> HAVING ---> SELECT ---> DISTINCT ---> ORDER BY
+                 |__________________________|
+                 cannot use alias from select
+*/
+--This is an demo for error example, uncomment is to see error
+-- SELECT C.CustomerID, C.ContactName, C.City, C.Country AS cty, COUNT(O.OrderID) AS Nums
+-- FROM Customers C JOIN Orders O ON C.CustomerID=O.CustomerID
+-- WHERE C.Country IN ('USA','Canda')
+-- GROUP BY C.CustomerID, C.ContactName, C.City, cty
+-- HAVING Nums >= 10
+-- ORDER BY Nums DESC
+
+SELECT *
+FROM Products
+
+UPDATE Products
+SET UnitPrice = 30
+WHERE ProductID = 1
+
+--DISTINCT: only get unique values
+--COUNT DISTINCT: only count unique values
+
+SELECT COUNT(DISTINCT City), COUNT(City)
+FROM Customers
+
+--AVG(): reutrn the average value of a numeric column
+--list average revenue for each customer
+
+SELECT c.CustomerID, c.ContactName, AVG(od.UnitPrice * od.Quantity) AS AveRevenue
+FROM Customers C JOIN Orders O ON C.CustomerID=O.CustomerID JOIN [Order Details] od ON od.OrderID=O.OrderID
+GROUP BY c.CustomerID, c.ContactName
+
+-- Why we use [Order Details] instead of Order for SUM() demo?
+SELECT c.CustomerID, c.ContactName, AVG(od.UnitPrice * od.Quantity) AS AveRevenue
+FROM Customers C JOIN Orders O ON C.CustomerID=O.CustomerID JOIN Orders od ON od.OrderID=O.OrderID
+GROUP BY c.CustomerID, c.ContactName
+
+--SUM()
+--MAX()
+--MIN()
+
+--top predicate: selecct a sepcific number or a certain percentage of records
+--retrieve top 5 most expensive product
+
+SELECT TOP 5 ProductName, UnitPrice
+FROM Products
+ORDER BY UnitPrice DESC
+
+SELECT TOP 10 PERCENT ProductName, UnitPrice
+FROM Products
+ORDER BY UnitPrice DESC
+
+--top 5 customer who created the most total revenue
+SELECT TOP 5 c.CustomerID, c.ContactName, SUM(od.UnitPrice * od.Quantity) AS SumRevenue
+FROM Customers C JOIN Orders O ON C.CustomerID=O.CustomerID JOIN [Order Details] od ON od.OrderID=O.OrderID
+GROUP BY c.CustomerID, c.ContactName
+ORDER BY SumRevenue DESC
+
+--natural order that was inserted
+--always use an ORDER BY statement
+SELECT TOP 5 ProductName, UnitPrice
+FROM Products
+
+--LIMIT: we do nnot have LIMIT in sql server, use TOP instead
+
+--Subquery: a SELECT statement hat is embeded in another SQL statement
+
+SELECT ContactName, City
+FROM Customers
+WHERE City IN (
+    SELECT City
+    FROM Customers
+    WHERE ContactName = 'Alejandra Camino'
+)
+
+--Same
+SELECT DISTINCT C.CustomerID, C.ContactName, C.City, C.Country
+FROM Customers C JOIN Orders O ON C.CustomerID=O.CustomerID
+
+SELECT CustomerID, ContactName, City, Country
+FROM Customers
+WHERE CustomerID IN (
+    SELECT DISTINCT CustomerID
+    FROM Orders
+)
+
+
+--subquery vs. join
+--1.JOIN can only be used in FROM clause, but subquery can be used in SELECT, FROM, WHERE, HAVING, ORDER BY
+
+
+SELECT O.OrderDate, E.FirstName, E.LastName
+FROM Orders O JOIN Employees E ON E.EmployeeID=O.EmployeeID
+WHERE E.City='London'
+ORDER BY O.OrderDate, E.FirstName, E.LastName
+
+
+SELECT O.OrderDate,
+(SELECT E1.LastName FROM Employees E1 WHERE O.EmployeeID=E1.EmployeeID) AS LastName,
+(SELECT E2.FirstName FROM Employees E2 WHERE O.EmployeeID=E2.EmployeeID) AS FirstName
+FROM Orders O
+WHERE(
+    SELECT E3.City
+    FROM Employees E3
+    WHERE E3.EmployeeID=O.EmployeeID
+) IN ('London')
+ORDER BY O.OrderDate, FirstName, LastName
+
+
+--2.subquery is easy to understand and maintain
+
+--Using join
+SELECT C.ContactName, C.Country
+FROM Customers C LEFT JOIN Orders O ON C.CustomerID=O.CustomerID
+WHERE O.OrderID IS NULL
+
+SELECT C.ContactName,C.Country
+FROM Customers C
+WHERE CustomerID NOT IN (
+    SELECT DISTINCT CustomerID
+    FROM Orders
+)
+
+--3.usually JOIN has a better performance than subquery
+--join: innter join/outter join
+--physical join: hashjoin, merge join, nested join
+
+
+--GROUP BY statement is very expensive: use subquery instead
+SELECT C.ContactName, COUNT(O.OrderID) AS Total
+FROM Customers C LEFT JOIN Orders O ON C.CustomerID=O.CustomerID
+GROUP BY C.ContactName
+ORDER BY Total DESC
+
+SELECT C.ContactName, (SELECT COUNT(O.OrderID) from Orders O where o.CustomerID=c.CustomerID) as Total
+FROM Customers C
+ORDER BY Total DESC
+
+--derived table: subquery in from clause
+--ALWAYS have an alias
+SELECT DT.CustomerID, DT.ContactName
+FROM (SELECT *
+FROM Customers) DT
+
+--get customer info and number of order made by each customer
+SELECT C.ContactName, COUNT(O.OrderID) AS Total, C.City
+FROM Customers C LEFT JOIN Orders O ON C.CustomerID=O.CustomerID
+GROUP BY C.ContactName, C.City
+ORDER BY Total DESC
+--group by one time and group by twice
+SELECT C.ContactName, DT.Nums, C.City
+FROM Customers C LEFT JOIN (
+    SELECT CustomerID, COUNT(OrderID) AS Nums
+    FROM Orders
+    GROUP BY CustomerID
+) DT ON C.CustomerID=DT.CustomerID
+ORDER BY Nums DESC
+
+--UNION vs. UNION ALL --????????????????
+--1.both are used to commbine different result sets vertically
+SELECT City,Country
+FROM Customers
+UNION
+SELECT City,Country
+FROM Employees
+
+--2.criteria
+--numbers of cols must be same
+--data type of each column must be identical
+
+/*
+Difference
+1.union remove all duplicate but union all does not
+2.union sort the first column ascendingly
+3.union can not be used in recursive cte, but union all can be used
+*/
+
+--Window function: operate on a set of rows and returen a single aggregated value for eacch row by adding extra columns
+--RANK()
+SELECT DT.ProductID, DT.ProductName, DT.UnitPrice, DT.RNK
+FROM (SELECT ProductID, ProductName, UnitPrice, RANK() OVER(ORDER BY UnitPrice DESC) AS RNK
+FROM Products) DT
+WHERE DT.RNK=2
+--Filter on window function by wrapping it up as a table
+--wrap in the derived table and retrieve data from derived table and filter with where clause
+
+--DENSE_RANK(): remove the gap when duplicate value occur
+SELECT ProductID, ProductName, UnitPrice, DENSE_RANK() OVER(ORDER BY UnitPrice DESC) AS RNK
+FROM Products
+
+--ROW_NUMBER(): return the number of the sorted records starting from 1
+SELECT ProductID, ProductName, UnitPrice, ROW_NUMBER() OVER(ORDER BY UnitPrice DESC) RN
+FROM Products
+
+--partition by:divide the resilt into partitions and perform calculation on each subset
+SELECT C.ContactName, C.City, C.Country, COUNT(O.OrderID) AS Total,
+RANK() OVER(PARTITION BY C.Country ORDER BY COUNT(O.OrderID) DESC) RNK
+FROM Customers C LEFT JOIN Orders O ON C.CustomerID=O.CustomerID
+GROUP BY C.ContactName, C.City, C.Country
+
+
+SELECT DT.Country, DT.ContactName, DT.Total, DT.RNK
+FROM (SELECT C.ContactName, C.City, C.Country, COUNT(O.OrderID) AS Total,
+RANK() OVER(PARTITION BY C.Country ORDER BY COUNT(O.OrderID) DESC) RNK
+FROM Customers C LEFT JOIN Orders O ON C.CustomerID=O.CustomerID
+GROUP BY C.ContactName, C.City, C.Country) DT
+
+
+--cte: common table expression -- temporaray named result set
+
+SELECT C.ContactName,c.Country, c.City, DT.Nums
+FROM Customers C LEFT JOIN (
+    SELECT CustomerID, COUNT(OrderID) AS Nums
+    FROM Orders
+    GROUP BY CustomerID
+) DT ON C.CustomerID=DT.CustomerID
+ORDER BY Nums DESC
+
+
+WITH OrderCntCTE
+AS(
+    SELECT CustomerID, COUNT(OrderID) AS Nums
+    FROM Orders
+    GROUP BY CustomerID
+)
+SELECT C.ContactName, C.City, C.Country, CTE.Nums
+FROM Customers C LEFT JOIN OrderCntCTE CTE ON C.CustomerID=CTE.CustomerID
+
+--CTE has to be used right after it defined, not code in between
+
+--recursive CTE:
+--initialization: initial call to cte which passes in some values to get things started
+--recursive rule
+
+SELECT EmployeeID, FirstName, ReportsTo
+FROM Employees
+
+WITH EmpHCTE
+AS(
+    SELECT EmployeeID, FirstName, ReportsTo, 1 lvl
+    FROM Employees
+    WHERE ReportsTo IS NULL
+    UNION ALL
+    SELECT E.EmployeeID,E.FirstName,E.ReportsTo, CTE.lvl+1
+    FROM Employees E INNER JOIN EmpHCTE CTE ON E.ReportsTo=CTE.EmployeeID
+)
+SELECT * FROM EmpHCTE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
