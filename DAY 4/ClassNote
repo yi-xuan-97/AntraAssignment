@@ -1,0 +1,247 @@
+--basic queries: SELECT, WHERE, ORDER BY, JOIN, AGGREGATION FUNCTIONS, HAVING
+--advanced topices: Subquery, cte, window functions, pagination
+--temp tables, table variables, sp, udf
+
+
+--check constraint: limit the value range that can be placed in to a column
+DELETE EMPLOYEE
+
+SELECT *
+FROM EMPLOYEE
+
+ALTER TABLE EMPLOYEE
+ADD CONSTRAINT Chk_Age_Employee CHECK(AGE BETWEEN 18 AND 65)
+
+INSERT INTO EMPLOYEE VALUES(6,'MONSTER',5000)
+INSERT INTO EMPLOYEE VALUES(1,'SAM',50)
+
+
+--identity property
+CREATE TABLE PRODUCT(
+    ID INT PRIMARY KEY IDENTITY(1,1),
+    ProductName VARCHAR(20) UNIQUE NOT NULL,
+    Price Money
+)
+
+SELECT *
+FROM PRODUCT
+
+INSERT INTO PRODUCT VALUES('CHERRY',3)
+INSERT INTO PRODUCT VALUES('GRAPE',2)
+INSERT INTO PRODUCT VALUES('WATERMELON',4)
+
+
+--truncate vs. delete ---!!!!!!!!!!!!!!!!!!
+/*
+1. DELETE is a DML, it will not reset the property value, TRUNCATE is DDL willreset the property value
+DELETE will not have change the structure of the table
+2. DELETE can be used with WHERE but TRUNCATE can not be used
+*/
+
+DELETE PRODUCT
+
+SELECT *
+FROM PRODUCT
+
+INSERT INTO PRODUCT VALUES('CHERRY',3)
+INSERT INTO PRODUCT VALUES('GRAPE',2)
+INSERT INTO PRODUCT VALUES('WATERMELON',4)
+
+TRUNCATE TABLE PRODUCT
+
+--ID reset with TRUNCATE but not DELETE
+
+DELETE PRODUCT
+WHERE ID=3
+
+SET IDENTITY_INSERT PRODUCT ON
+INSERT INTO PRODUCT(ID, ProductName, Price) VALUES(3,'WATERMELON',4)
+
+--DRIP: DDL statement that will delete the whole table
+
+--referential integrity: foreign key
+CREATE TABLE DEPARTMENT(
+    ID INT PRIMARY KEY,
+    DepartmentName VARCHAR(20),
+    Location VARCHAR(20)
+)
+
+DROP TABLE EMPLOYEE
+
+CREATE TABLE EMPLOYEE(
+    ID INT PRIMARY KEY,
+    EmployeeName VARCHAR(20),
+    Age int CHECK(AGE BETWEEN 18 AND 65),
+    DepartmentID int FOREIGN KEY REFERENCES Department(ID) --ON DELETE SET NULL: record will be set to null/ON DELETE CASCADE: recod be deleted 
+)
+
+SELECT *
+FROM EMPLOYEE
+
+SELECT *
+FROM DEPARTMENT
+
+INSERT INTO DEPARTMENT VALUES(1, 'IT', 'Chicago')
+INSERT INTO DEPARTMENT VALUES(2, 'HR', 'Sterling')
+INSERT INTO DEPARTMENT VALUES(3, 'QA', 'Pairs')
+
+INSERT INTO EMPLOYEE VALUES (1, 'Fred', 34, 1)
+INSERT INTO EMPLOYEE VALUES (2, 'Sam', 34, 4)
+
+DELETE FROM DEPARTMENT
+WHERE ID=1
+--How about ID=3
+
+DROP TABLE EMPLOYEE
+
+CREATE TABLE EMPLOYEE(
+    ID INT PRIMARY KEY,
+    EmployeeName VARCHAR(20),
+    Age int CHECK(AGE BETWEEN 18 AND 65),
+    DepartmentID int FOREIGN KEY REFERENCES Department(ID) ON DELETE CASCADE
+)
+
+
+--Composite pk
+CREATE TABLE STUDENT(
+    ID INT PRIMARY KEY,
+    StudentName VARCHAR(20)
+)
+
+CREATE TABLE CLASS(
+    ID INT PRIMARY KEY,
+    ClassNake VARCHAR(20)
+)
+
+CREATE TABLE ENROLLMENT(
+    StudentID INT NOT NULL,
+    ClassID INT NOT NULL,
+    CONSTRAINT PK_ENROLLMENT PRIMARY KEY(StudentID, ClassID),
+    CONSTRAINT PK_ENROLLMENT_STUDENT FOREIGN KEY(StudentID) REFERENCES STUDENT(ID),
+    CONSTRAINT PK_ENROLLMENT_CLASS FOREIGN KEY(ClassID) REFERENCES CLASS(ID)
+)
+
+--transaction: a group of logically related DML statement that will either succeed together or fail together
+
+--3 modes
+--Autocommit transaction: default one
+--Implicit transaction
+--Explicit transaction 
+
+DROP TABLE PRODUCT
+
+CREATE TABLE PRODUCT(
+    ID INT PRIMARY KEY,
+    ProductName VARCHAR(20) UNIQUE NOT NULL,
+    Price Money,
+    Quatity INT
+)
+
+INSERT INTO PRODUCT VALUES(1,'CHERRY',3, 100)
+INSERT INTO PRODUCT VALUES(2,'GRAPE',2, 100)
+INSERT INTO PRODUCT VALUES(3,'WATERMELON',4, 100)
+
+SELECT *
+FROM PRODUCT
+
+
+BEGIN TRAN
+INSERT INTO PRODUCT VALUES(4,'FLAT WHITE',4,100)
+SELECT *
+FROM PRODUCT
+
+COMMIT
+
+DELETE FROM PRODUCT
+
+
+
+BEGIN TRAN
+INSERT INTO PRODUCT VALUES(5,'FLAT YELLOW',4,100)
+
+ROLLBACK
+
+
+--Properies
+--ACID
+--A: Atomicity: work is atomic
+--C: Consistency: whatever happend in the middle of the transaction, this property will 
+--I: Isolation: locking the resource --!!!!!!!
+--D: Durability: once the transaction is completed, the change it made to our db will be permenant
+
+/*
+Concurrency problem: when two or more users trying to access the same time
+1.dirty read: if t1 allow t2 to read the uncommitted data and then t1 rolled back; 
+happended when isolation level is read uncommited
+solved by updateing isolation level to
+2.lost update: when t1 and t2 read and update the same data but t2 finished its work earlier, so the udpate from t2 will be missing
+happened when isolation level is READ commited: 
+solved by updateing isolation level to
+3.none repeatable read: t1 read and update the same data twice while t2 is updating the data
+happened when isolation level is read committed
+solved by updateing isolation level to
+4.phantom read: t1 rad and update the same data twice while t2 is inserting the data
+ioslication level: reapeatabl read
+solved by SERIZ
+
+what may cause them, possible solution
+availability
+data consistancy
+*/
+
+
+--index: on disk-structure to increase the data retrival speed - select
+--since data can only be sorted in one way there will only be one clustered index in one table genertaed by praimary key
+--clustered index: sort the rercord, one clustered index in one table, generated by primary key
+--non-clustered index: will not sort record, store elsewhere and point to data row, generated by unique constraint, one table can have multiple clustered index
+
+CREATE TABLE CUSTOMER(
+    ID INT,
+    FULLNAME VARCHAR(20),
+    CITY VARCHAR(20),
+    COUNTRY VARCHAR(20)
+)
+
+SELECT *
+FROM CUSTOMER
+
+
+CREATE CLUSTERED INDEX Cluster_IX_Customer_ID ON CUSTOMER(ID)
+
+INSERT INTO CUSTOMER VALUES(2,'DAVID','PORTLAND','USA')
+INSERT INTO CUSTOMER VALUES(1,'FRED','NEWYORK','USA')
+
+DROP TABLE CUSTOMER
+
+CREATE TABLE CUSTOMER(
+    ID INT PRIMARY KEY,
+    FULLNAME VARCHAR(20),
+    CITY VARCHAR(20),
+    COUNTRY VARCHAR(20)
+)
+
+--PRIMARY KEY is automated a clustered index
+
+--non-clustered index
+
+CREATE INDEX Non_Cluster_IX_Customer_ID ON CUSTOMER(CITY)
+
+/*
+Custered index vs. non-clustered index
+Clustered disadvantage:
+extra space, slow down other DML statements including UPDATE/INSERT/DELETE
+only choose clustered index when nessasary
+*/
+
+--PERFORMANCE TUNING
+/*
+1. look at the excution plan/sql profiler
+2. creating index wisely
+3. avoid unncecessary joins
+4. avoid SELECT *
+5. derived table to avoid a lot of non-aggregated fields
+6. use join to replace the subquery
+*/
+
+
+
