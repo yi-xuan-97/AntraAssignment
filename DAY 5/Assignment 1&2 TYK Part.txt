@@ -1,0 +1,107 @@
+﻿Assignment 1
+01 Introduction to C# and Data Types
+
+
+Understanding Data Types
+Test your Knowledge
+1. What type would you choose for the following “numbers”?
+A person’s telephone number: string
+A person’s height: double 
+A person’s age: int
+A person’s gender (Male, Female, Prefer Not To Answer): enum/string
+A person’s salary: decimal
+A book’s ISBN: string
+A book’s price: decimal
+A book’s shipping weight: double
+A country’s population: long
+The number of stars in the universe: BigInteger
+The number of employees in each of the small or medium businesses in theUnited Kingdom (up to about 50,000 employees per business): int/long
+
+
+
+
+2. What are the difference between value type and reference type variables? What is
+boxing and unboxing?
+1.Value type will directly hold the value, while reference type will hold the memory address for this value.
+2.Value types are stored in the stack memory and reference types are stored int the heap memory. 
+3.Value type will not be collected by garbage collector but reference type will be collected by garabage collector. 
+4. Value type can be created by struct or enum while reference type can be created by class, interface, delegate or array. 
+5. Value type can not accept any null values while reference type can accept null values. 
+
+
+
+
+
+
+
+
+3. What is meant by the terms managed resource and unmanaged resource in .NET
+1.managed heap: garbage collector will run automatically
+2.Unmanaged heap: call Dispose() from IDisposable interface
+
+
+
+
+4. Whats the purpose of Garbage Collector in .NET?
+The garbage collector manages the allocation and release of memory for an application. For developers working with managed code, this means that you don't have to write code to perform memory management tasks. Automatic memory management can eliminate common problems, such as forgetting to free an object and causing a memory leak or attempting to access memory for an object that's already been freed.
+to find more information use the following link
+
+
+
+
+
+
+Test your Knowledge
+1. What happens when you divide an int variable by 0?
+DivideByZeroException will be throw at runtime.
+
+
+2. What happens when you divide a double variable by 0?
+The result will be a special value called "Infinity" or “Not A Number”
+
+
+3. What happens when you overflow an int variable, that is, set it to a value beyond its
+Range?
+Specifically, if you set an int variable to a value beyond its range, it will wrap around to the minimum value of int if it's an overflow from a larger value or to the maximum value of int if it's an overflow from a smaller value. This behavior is known as integer overflow.
+
+
+4. What is the difference between x = y++; and x = ++y;?
+x = y++; is a postfix increment operation. It assigns the current value of y to x, then increments y.
+x = ++y; is a prefix increment operation. It increments y first, then assigns the updated value of y to x.
+
+
+5. What is the difference between break, continue, and return when used inside a loop
+Statement?
+break is used to exit the loop immediately, skipping any remaining iterations.
+continue is used to skip the current iteration of the loop and continue with the next iteration.
+return is used to exit the entire method containing the loop, not just the loop itself.
+
+
+6. What are the three parts of a for statement and which of them are required?
+Initialization, Condition, Iteration. All of three were not required.
+
+
+Test your Knowledge
+1. When to use String vs. StringBuilder in C# ?
+String is immutable in C#. If you want to modify a string, go with StringBuilder. StringBuilder represents a mutable string.
+
+
+2. What is the base class for all arrays in C#?
+The base class for all arrays in C# is System.Array.
+
+
+3. How do you sort an array in C#?
+I can sort an array in C# using the Array.Sort() method.
+
+
+4. What property of an array object can be used to get the total number of elements in
+an array?
+I can use the Length property of an array to get the total number of elements in the array. 
+
+
+5. Can you store multiple data types in System.Array?
+Yes, we can store multiple data types in System.Array because Array is a base class for all arrays in C#.
+
+
+6. What’s the difference between the System.Array.CopyTo() and System.Array.Clone()?
+CopyTo() copies elements to an existing array, while Clone() creates a new array with copies of the elements. Additionally, CopyTo() allows you to specify a target array, whereas Clone() creates a new array object.

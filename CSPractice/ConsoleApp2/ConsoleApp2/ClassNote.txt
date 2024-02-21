@@ -1,0 +1,93 @@
+Encapsulation: hide implementation, increase flexibility
+read only, write only for private get/set
+
+Constructor
+1. a special method which shares the same name of the class and does not have any return type not even void
+2. it is used to create an object of the class and initualize the class members
+3. if there is not constructor in the class, c# will provide a default constructor and its parameters
+4. constructor can be overloaded
+5. constructor can not be inherited. So, a constructor can not be overriden
+6. by default, derived class constructor will make a call to base class parameterless constructor
+
+Inheritance: allows one class to inherit from another existing class so that the derived class can reuse, extend and modify the code we have in derived class
+
+Employee Management System
+full time employee: biweekly pay, benifits
+part time employee: hour pay
+
+In common: id, name, email, phone, address; perform work
+
+C#
+One inheritance, use interface for multipule inheritance
+
+Abstract Class: is the class that can not create any object from it, can contains both abstract and concrete methods
+
+Abstract method: can only be used in an abtract class, it does not have a body. the body is provide by the derived class
+
+virtual/abstract keyword: allows method to be override
+
+a sealed class means it can not be class derived from it
+
+Polymorphism: many form
+Method overriding: happens between the base class and derived class, we have the same method signature including access modifier, 
+method name, input/output parameters; derived classes ccan give different implementations for the same method
+
+Method overloading: multipule methods in the same class, same access muldifier, same method name but different input/output parameters
+
+//get method to display the form
+CreateUser()
+
+//post method to create user
+CreateUser([FormBody] form)
+
+static class
+static: members should belong to the class itself instead of any instance
+static class: all the member should be static
+
+Sealed class vs Static class:
+1. both class can not be inherited
+2. sealed class can have instances but static class can not
+3. sealed class can contains both static and non-static method but static can only contains static method
+
+
+Abstract class vs Static class:
+1. both can not be instantiated
+2. abstract class should be inherited but static class can not be inherited
+3. abstract class can contains either static or non-static class but for static class, it can only contain static method
+
+Use case for static class:
+1. provide utilities: Console class and writeline method, Math class
+2. create extensions
+3. database configuration class: db name, server name, port number, database connection strings
+4. design pattern: singleton
+
+
+WHAT IS A EXTENSION METHOD AND HOW YOU WRITE A EXTENSION METHOD, WILL BE ASKED TO WRITE CODE
+Extension method: allow us to add additional functionalities to the existing type without modifying, deriving or recompiling the original class
+
+Syntax of creating custom extension method:
+
+1. the class that contains extension method must be static class
+2. method itself must be static method
+3. first parameter of the extension method must be the type which will be extend
+4. first parameter must be written after 'this' keyword
+ 
+ Why we need extension:
+ 1.SOLID: O - open/close principle: object/entities should be open for extension but close for modification
+ 
+ Build-in Extension methods: LINQ
+ 
+ Casing Technique/Naming convention:
+ 1. passcal casing: first letter of an identifier must be written in uppercase and renaming letters must be in lower case
+ Class, Method, Namespace, Property, Interface, Delegates
+ 2. camel casing: for the first word, all the letter are in lower case but for rest of the words, they folllow pascal casing
+ variable, object
+
+
+
+
+
+
+
+
+

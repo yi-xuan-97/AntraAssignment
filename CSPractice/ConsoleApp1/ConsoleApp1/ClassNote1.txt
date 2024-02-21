@@ -1,0 +1,29 @@
+Category of Types:
+1. Built-in Types
+    signed types: +/-
+    unsigned types
+2. User defined types
+
+Another categorization of C# types:
+1.Values type
+2.Reference type
+Different:
+1. value type will directly hold the value while reference type will hold the memory addresss of the value
+2. value type are stored in the stack memory and reference types are stored in the heap memory
+3. value type will not be collected by garbage collector but reference type will be collect by garbage collector
+
+CLR: common language runtime
+Generation 0,1 and 2
+
+Two parts in heap memory:
+1.unmanaged heap
+2.managed heap
+
+
+
+
+
+
+
+
+
