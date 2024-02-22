@@ -4,19 +4,25 @@ public class NumSizeNRange
 {
     public void OutputRange()
     {
-        Console.WriteLine("Data Type\t\tBytes\t\tMin Value\t\tMax Value");
+        Console.WriteLine("{0,-10} {1,-15} {2,-25} {3,-25}", "Type", "Bytes", "Min Value", "Max Value");
+        Console.WriteLine(new string('-', 75));
 
-        Console.WriteLine($"sbyte\t\t\t{sizeof(sbyte)}\t\t{sbyte.MinValue}\t\t{sbyte.MaxValue}");
-        Console.WriteLine($"byte\t\t\t{sizeof(byte)}\t\t{byte.MinValue}\t\t\t{byte.MaxValue}");
-        Console.WriteLine($"short\t\t\t{sizeof(short)}\t\t{short.MinValue}\t\t{short.MaxValue}");
-        Console.WriteLine($"ushort\t\t\t{sizeof(ushort)}\t\t{ushort.MinValue}\t\t\t{ushort.MaxValue}");
-        Console.WriteLine($"int\t\t\t{sizeof(int)}\t\t{int.MinValue}\t\t{int.MaxValue}");
-        Console.WriteLine($"uint\t\t\t{sizeof(uint)}\t\t{uint.MinValue}\t\t\t{uint.MaxValue}");
-        Console.WriteLine($"long\t\t\t{sizeof(long)}\t\t{long.MinValue}\t\t{long.MaxValue}");
-        Console.WriteLine($"ulong\t\t\t{sizeof(ulong)}\t\t{ulong.MinValue}\t\t\t{ulong.MaxValue}");
-        Console.WriteLine($"float\t\t\t{sizeof(float)}\t\t{float.MinValue}\t\t{float.MaxValue}");
-        Console.WriteLine($"double\t\t\t{sizeof(double)}\t\t{double.MinValue}\t\t{double.MaxValue}");
-        Console.WriteLine($"decimal\t\t\t{sizeof(decimal)}\t\t{decimal.MinValue}\t\t{decimal.MaxValue}");
+        PrintTypeInfo("sbyte", sizeof(sbyte), sbyte.MinValue, sbyte.MaxValue);
+        PrintTypeInfo("byte", sizeof(byte), byte.MinValue, byte.MaxValue);
+        PrintTypeInfo("short", sizeof(short), short.MinValue, short.MaxValue);
+        PrintTypeInfo("ushort", sizeof(ushort), ushort.MinValue, ushort.MaxValue);
+        PrintTypeInfo("int", sizeof(int), int.MinValue, int.MaxValue);
+        PrintTypeInfo("uint", sizeof(uint), uint.MinValue, uint.MaxValue);
+        PrintTypeInfo("long", sizeof(long), long.MinValue, long.MaxValue);
+        PrintTypeInfo("ulong", sizeof(ulong), ulong.MinValue, ulong.MaxValue);
+        PrintTypeInfo("float", sizeof(float), float.MinValue, float.MaxValue);
+        PrintTypeInfo("double", sizeof(double), double.MinValue, double.MaxValue);
+        PrintTypeInfo("decimal", sizeof(decimal), decimal.MinValue, decimal.MaxValue);
+    }
+
+    static void PrintTypeInfo(string typeName, int bytes, dynamic minValue, dynamic maxValue)
+    {
+        Console.WriteLine("{0,-10} {1,-15} {2,-25} {3,-25}", typeName, bytes, minValue, maxValue);
     }
 
     public void TimeOutput()
