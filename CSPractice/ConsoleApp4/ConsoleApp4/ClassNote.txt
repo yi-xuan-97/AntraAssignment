@@ -1,0 +1,67 @@
+Delegates: a tye-safe function pointer which takes a method as a parameter; reference type
+Benifit:
+
+
+Built-in delegate: --!!!!!!!!!!!! BIWEN
+Action: will take functions that have generic input but returns void as parameter
+Predicate: will take function that have generics input but return boolean as parameter
+Func: will take functions that have generics input and will return a generic type as an output parameter
+
+Anonymous Type
+advantage:  ----??????
+
+How you can convert func to delegate, change output to be boolean
+
+Exception: they are runtime errors, are catched by try, catch and finally block
+Exception Handling:
+
+System.Exception class
+    --SystemException class
+        --OutOfMemoryException
+        --StackOverFlowException
+        --ArgumentException
+            --ArgumentNullException
+            --ArgumentOutOfRangeException
+        --ArithmeticException
+            --DivideByZero
+            --Overflow
+
+Finally block:
+make sure we clean up everything and will be executed no matter if we have an exception or not
+
+Managed heap: manged by garbage collector
+Unmanged heap: files, database connections
+
+We can use finally block to call dispose method inside of the IDisposable interface
+
+
+Use Case for Finally block
+make sure we clean up everything
+1. call Dispose() method fromm IDisposable interface
+2. Rollback transactions
+
+try{
+    //start transaction
+    //commit
+}
+catch(Excption e){
+    //handle exception
+}
+finally{
+    if(xx){
+        rollback transaction
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
