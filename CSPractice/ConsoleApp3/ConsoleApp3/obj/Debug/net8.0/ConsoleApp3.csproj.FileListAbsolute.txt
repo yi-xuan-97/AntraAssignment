@@ -1,0 +1,15 @@
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/CSPractice/ConsoleApp3/ConsoleApp3/bin/Debug/net8.0/ConsoleApp3
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/CSPractice/ConsoleApp3/ConsoleApp3/bin/Debug/net8.0/ConsoleApp3.deps.json
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/CSPractice/ConsoleApp3/ConsoleApp3/bin/Debug/net8.0/ConsoleApp3.runtimeconfig.json
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/CSPractice/ConsoleApp3/ConsoleApp3/bin/Debug/net8.0/ConsoleApp3.dll
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/CSPractice/ConsoleApp3/ConsoleApp3/bin/Debug/net8.0/ConsoleApp3.pdb
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/CSPractice/ConsoleApp3/ConsoleApp3/obj/Debug/net8.0/ConsoleApp3.GeneratedMSBuildEditorConfig.editorconfig
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/CSPractice/ConsoleApp3/ConsoleApp3/obj/Debug/net8.0/ConsoleApp3.AssemblyInfoInputs.cache
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/CSPractice/ConsoleApp3/ConsoleApp3/obj/Debug/net8.0/ConsoleApp3.AssemblyInfo.cs
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/CSPractice/ConsoleApp3/ConsoleApp3/obj/Debug/net8.0/ConsoleApp3.csproj.CoreCompileInputs.cache
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/CSPractice/ConsoleApp3/ConsoleApp3/obj/Debug/net8.0/ConsoleApp3.sourcelink.json
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/CSPractice/ConsoleApp3/ConsoleApp3/obj/Debug/net8.0/ConsoleApp3.dll
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/CSPractice/ConsoleApp3/ConsoleApp3/obj/Debug/net8.0/refint/ConsoleApp3.dll
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/CSPractice/ConsoleApp3/ConsoleApp3/obj/Debug/net8.0/ConsoleApp3.pdb
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/CSPractice/ConsoleApp3/ConsoleApp3/obj/Debug/net8.0/ConsoleApp3.genruntimeconfig.cache
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/CSPractice/ConsoleApp3/ConsoleApp3/obj/Debug/net8.0/ref/ConsoleApp3.dll

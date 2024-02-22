@@ -1,3 +1,17 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿using Assignment1;
 
-Console.WriteLine("Hello, World!");
+HackerName hk = new HackerName();
+// hk.GenerateName();
+
+NumSizeNRange nsr = new NumSizeNRange();
+// nsr.OutputRange();
+// nsr.TimeOutput();
+
+LoopNOperator lno = new LoopNOperator();
+// lno.FizzBuzzis();
+// lno.RandomeNum();
+// lno.PrintStar();
+// lno.CalculateAgeNSalary();
+// lno.Greeting();
+// lno.PrintNum();
+
