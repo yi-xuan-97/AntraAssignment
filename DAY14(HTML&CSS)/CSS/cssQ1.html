@@ -1,67 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Website Header</title>
-<!-- Bootstrap CSS -->
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-<style>
-    /* Custom CSS for the header */
-    .navbar {
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Website Header</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      /* Custom CSS for the header */
+      .navbar {
         background-color: #343a40; /* Dark background color */
-    }
-    .navbar-brand {
+      }
+      .navbar-brand {
         color: #ffffff; /* White text color for the brand */
         font-weight: bold;
-    }
-    .navbar-nav .nav-link {
+      }
+      .navbar-nav .nav-link {
         color: #ffffff; /* White text color for menu items */
-    }
-    .navbar-nav .nav-item:hover .dropdown-menu {
+      }
+      .navbar-nav .nav-item:hover .dropdown-menu {
         display: block; /* Show dropdown menu on hover */
-    }
-</style>
-</head>
-<body>
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand" href="https://antra.net" target="_blank"
+          ><img
+            src="https://antra.com/wp-content/uploads/2023/03/Antra-black.png"
+            alt="Logo"
+            width="100"
+            height="100"
+        /></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+              <form class="form-inline my-2 my-lg-0">
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container">
-    <a class="navbar-brand" href="https://antra.net" target="_blank">Antra</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Services
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
-            <a class="dropdown-item" href="#">Service 1</a>
-            <a class="dropdown-item" href="#">Service 2</a>
-            <a class="dropdown-item" href="#">Service 3</a>
+                <a class="navbar-brand" href="https://antra.net" target="_blank"
+                ><img
+                  src="data:image/png;base64,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"
+                  alt="Logo"
+                  width="40"
+                  height="40"
+              /></a>
+                <ul class="navbar-nav mr-auto">
+                  <li class="nav-item dropdown">
+                    <a
+                      class="nav-link dropdown-toggle"
+                      href="https://antra.net/"
+                      id="navbarDropdownMenuLink1"
+                      role="button"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      USER
+                    </a>
+                    <div
+                      class="dropdown-menu"
+                      aria-labelledby="navbarDropdownMenuLink1"
+                    >
+                      <a class="dropdown-item" href="https://antra.net/">User 1</a>
+                      <a class="dropdown-item" href="https://antra.net/">User 2</a>
+                      <a class="dropdown-item" href="https://antra.net/">User 3</a>
+                    </div>
+                  </li>
+                  </ul>
+
+                <input
+                  class="form-control mr-sm-2"
+                  type="search"
+                  placeholder="Search"
+                  aria-label="Search"
+                />
+                <a href="https://antra.net/" target="_blank"
+                  ><img
+                    src="data:image/png;base64,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"
+                    alt="Antra Logo"
+                    width="40"
+                    height="40"
+                /></a>
+              </form>
+            </div>
+
+            <div class="col-md-12">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="https://antra.net/">NEWS</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a
+                    class="nav-link dropdown-toggle"
+                    href="https://antra.net/"
+                    id="navbarDropdownMenuLink1"
+                    role="button"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    ABOUT THE UNIVERSITY
+                  </a>
+                  <div
+                    class="dropdown-menu"
+                    aria-labelledby="navbarDropdownMenuLink1"
+                  >
+                    <a class="dropdown-item" href="https://antra.net/">University 1</a>
+                    <a class="dropdown-item" href="https://antra.net/">University 2</a>
+                    <a class="dropdown-item" href="https://antra.net/">University 3</a>
+                  </div>
+                </li>
+                <li class="nav-item dropdown">
+                  <a
+                    class="nav-link dropdown-toggle"
+                    href="https://antra.net/"
+                    id="navbarDropdownMenuLink1"
+                    role="button"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    TRAINING COURSE
+                  </a>
+                  <div
+                    class="dropdown-menu"
+                    aria-labelledby="navbarDropdownMenuLink1"
+                  >
+                    <a class="dropdown-item" href="https://antra.net/">Course 1</a>
+                    <a class="dropdown-item" href="https://antra.net/">Course 2</a>
+                    <a class="dropdown-item" href="https://antra.net/">Course 3</a>
+                  </div>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" href="https://antra.net/">FOR COMPANY</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="https://antra.net/">FORUM</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="https://antra.net/">CONTACT</a>
+                </li>
+              </ul>
+            </div>
           </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Contact</a>
-        </li>
-      </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
-      </form>
-    </div>
-  </div>
-</nav>
+        </div>
+      </div>
+    </nav>
 
-<!-- Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-</body>
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
 </html>
