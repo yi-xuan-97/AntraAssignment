@@ -1,0 +1,47 @@
+Recap:
+1. generics
+2. delegates: Func, Predicate, Action
+3. Extension method: LINQ (built=in)
+
+LINQ: is a sql like syntax that we use in C# to get data from different data sources
+
+Data Providers:
+LINQ to obejects: in-memory data sources: list, array - IEnumerable interface
+LINQ to datasets: work with Ado.net - out of date
+LINQ to sql: talk to sql server database
+LINQ to entities: talk to other sql db, entity framework -- out of memory data sources  -IQueryable 
+
+in-memory data source: data stored temporarily in our application -> return type IEnumerable: list/array
+out-memory data sources: return type IQueryable : databases 
+
+one result: IQueryable
+return a collection, foreacch loop or we need to use the result. queryable not excecuted 
+
+Why LINQ:
+c# will be more easy to use, work on ORM map c# to database.
+
+Use lambda with LINQ and delegate
+
+Select a single record:
+1. First vs FirstOrDefault
+2. Single vs SingleOrDefaut
+
+******
+First: return the first record when there is one or more matching value found and if no matching record got found, it will throw an exception
+FirstOrDefault: return the first record and when there is no matching values found, then assign numm value 
+Single: return matchined single record but if we can not find any matching record, it will throw an exception. if we have more than one it will also throw exception
+SingeOrDefault: return the matchied single record, but if no matching record found, then it will assign a defaut null value. And if there is more than one matching record got found, it will throw an exception
+
+First reocrd: fristordefault
+primary key/unique value: singleordefault
+never use first/single: might throw exception
+
+Quantifier Operator:
+Any(): checks if any of the elements satisfy the spefifies condition, if yes return true
+All(): checks if all elements satisfy the spefifies condition
+
+var result = Produc
+
+
+
+

@@ -1,0 +1,15 @@
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/CSPractice/EvaPrep/EvaPrep/bin/Debug/net8.0/EvaPrep
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/CSPractice/EvaPrep/EvaPrep/bin/Debug/net8.0/EvaPrep.deps.json
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/CSPractice/EvaPrep/EvaPrep/bin/Debug/net8.0/EvaPrep.runtimeconfig.json
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/CSPractice/EvaPrep/EvaPrep/bin/Debug/net8.0/EvaPrep.dll
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/CSPractice/EvaPrep/EvaPrep/bin/Debug/net8.0/EvaPrep.pdb
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/CSPractice/EvaPrep/EvaPrep/obj/Debug/net8.0/EvaPrep.GeneratedMSBuildEditorConfig.editorconfig
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/CSPractice/EvaPrep/EvaPrep/obj/Debug/net8.0/EvaPrep.AssemblyInfoInputs.cache
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/CSPractice/EvaPrep/EvaPrep/obj/Debug/net8.0/EvaPrep.AssemblyInfo.cs
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/CSPractice/EvaPrep/EvaPrep/obj/Debug/net8.0/EvaPrep.csproj.CoreCompileInputs.cache
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/CSPractice/EvaPrep/EvaPrep/obj/Debug/net8.0/EvaPrep.sourcelink.json
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/CSPractice/EvaPrep/EvaPrep/obj/Debug/net8.0/EvaPrep.dll
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/CSPractice/EvaPrep/EvaPrep/obj/Debug/net8.0/refint/EvaPrep.dll
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/CSPractice/EvaPrep/EvaPrep/obj/Debug/net8.0/EvaPrep.pdb
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/CSPractice/EvaPrep/EvaPrep/obj/Debug/net8.0/EvaPrep.genruntimeconfig.cache
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/CSPractice/EvaPrep/EvaPrep/obj/Debug/net8.0/ref/EvaPrep.dll

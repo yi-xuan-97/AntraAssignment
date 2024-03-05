@@ -1,0 +1,15 @@
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/CSPractice/ConsoleApp5/ConsoleApp5/bin/Debug/net8.0/ConsoleApp5
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/CSPractice/ConsoleApp5/ConsoleApp5/bin/Debug/net8.0/ConsoleApp5.deps.json
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/CSPractice/ConsoleApp5/ConsoleApp5/bin/Debug/net8.0/ConsoleApp5.runtimeconfig.json
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/CSPractice/ConsoleApp5/ConsoleApp5/bin/Debug/net8.0/ConsoleApp5.dll
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/CSPractice/ConsoleApp5/ConsoleApp5/bin/Debug/net8.0/ConsoleApp5.pdb
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/CSPractice/ConsoleApp5/ConsoleApp5/obj/Debug/net8.0/ConsoleApp5.GeneratedMSBuildEditorConfig.editorconfig
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/CSPractice/ConsoleApp5/ConsoleApp5/obj/Debug/net8.0/ConsoleApp5.AssemblyInfoInputs.cache
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/CSPractice/ConsoleApp5/ConsoleApp5/obj/Debug/net8.0/ConsoleApp5.AssemblyInfo.cs
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/CSPractice/ConsoleApp5/ConsoleApp5/obj/Debug/net8.0/ConsoleApp5.csproj.CoreCompileInputs.cache
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/CSPractice/ConsoleApp5/ConsoleApp5/obj/Debug/net8.0/ConsoleApp5.sourcelink.json
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/CSPractice/ConsoleApp5/ConsoleApp5/obj/Debug/net8.0/ConsoleApp5.dll
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/CSPractice/ConsoleApp5/ConsoleApp5/obj/Debug/net8.0/refint/ConsoleApp5.dll
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/CSPractice/ConsoleApp5/ConsoleApp5/obj/Debug/net8.0/ConsoleApp5.pdb
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/CSPractice/ConsoleApp5/ConsoleApp5/obj/Debug/net8.0/ConsoleApp5.genruntimeconfig.cache
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/CSPractice/ConsoleApp5/ConsoleApp5/obj/Debug/net8.0/ref/ConsoleApp5.dll

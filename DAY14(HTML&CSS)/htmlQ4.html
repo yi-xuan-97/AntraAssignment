@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Custom Column Table with Bootstrap</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      .double-border-table {
+          border-collapse: separate;
+          border-spacing: 1;
+      }
+      .double-border-table td,
+      .double-border-table th {
+          border: 1px solid black;
+          padding: 50px;
+      }
+  </style>
+  </head>
+  <body>
+    <div class="container">
+      <table class="table double-border-table">
+        <tr>
+          <td colspan="4">Antra Life</td>
+        </tr>
+        <tr>
+          <td colspan="2">Google</td>
+          <td colspan="2">Github</td>
+        </tr>
+        <tr>
+          <td colspan="1">FB</td>
+          <td colspan="1">Gmail</td>
+          <td colspan="1">Youtube</td>
+          <td colspan="1">2048</td>
+        </tr>
+        <tr>
+          <td colspan="1">Food</td>
+          <td colspan="2">Game</td>
+          <td colspan="2">
+            <table class="table table-bordered">
+              <tr>
+                <td colspan="1">Social Life</td>
+              </tr>
+              <tr>
+                <td colspan="1">Sleep</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3">Beer ></td>
+          <td colspan="1">WC</td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
