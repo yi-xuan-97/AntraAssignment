@@ -54,6 +54,12 @@ finally{
 }
 
 
+What is anonymous? 
+A method without a name.
+One time code usage.
+
+What is var in c#?
+Declare a variable without assigning any type
 
 
 
