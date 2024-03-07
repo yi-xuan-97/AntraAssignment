@@ -1,0 +1,60 @@
+@{
+    ViewBag.Title = "Product";
+}
+
+@model IEnumerable<WebApplication.Models.ProductCatalog>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Product Catalog Table Demo</h2>
+
+<table>
+    <thead>
+    <tr>
+        <th>Catalog Id</th>
+        <th>Product Id</th>
+        <th>ProductName</th>
+        <th>Supplier Id</th>
+        <th>Unit In Stock</th>
+        <th>UnitPrice</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var i in Model)
+    {
+        <tr>
+            <td>@i.CatalogId</td>
+            <td>@i.ProductId</td>
+            <td>@i.ProductName</td>
+            <td>@i.SupplierId</td>
+            <td>@i.UnitPrice</td>
+            <td>@i.UnitInStock</td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+</body>
+</html>

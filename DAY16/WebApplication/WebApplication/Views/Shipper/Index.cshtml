@@ -1,0 +1,56 @@
+@{
+    ViewBag.Title = "Shipper";
+}
+
+@model IEnumerable<WebApplication.Models.Shipper>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Shipper Table Demo</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Shipper Id</th>
+            <th>Shipper Name</th>
+            <th>Phone</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var i in Model)
+        {
+            <tr>
+                <td>@i.ShipperId</td>
+                <td>@i.CompanyName</td>
+                <td>@i.Phone</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+</body>
+</html>
+
+
