@@ -1,0 +1,1 @@
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="Antra_Training_WebMvc.MvcApplication" Language="C#" %>
