@@ -16,6 +16,7 @@ builder.Services.AddDbContext<eShopDbContext>(option =>
 });
 
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
 
 
 var app = builder.Build();

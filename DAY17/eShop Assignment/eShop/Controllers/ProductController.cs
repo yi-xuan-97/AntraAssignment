@@ -28,15 +28,20 @@ public class ProductController : Controller
     [HttpPost]
     public IActionResult Add(Product obj)
     {
-        try
+        if (ModelState.IsValid)
         {
-            productRepository.Insert(obj);
-            return RedirectToAction("Index");
+            try
+            {
+                productRepository.Insert(obj);
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                return View(obj);
+            }
         }
-        catch (Exception ex)
-        {
-            return View(obj);
-        }
+
+        return View(obj);
     }
 
     [HttpGet]

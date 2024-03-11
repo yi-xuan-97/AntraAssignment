@@ -1,6 +1,4 @@
-@{
-    Layout = null; // Ensure no layout is applied
-}
+@model Product
 
 <!DOCTYPE html>
 <html lang="en">
@@ -35,16 +33,18 @@
     <h2>Add Product</h2>
     <form id="productForm" asp-action="Add" asp-controller="Product">
         <label for="ProductName">Product Name:</label>
-        <input type="text" id="productName" name="ProductName" required>
+        <input type="text" id="productName"  asp-for="ProductName"  name="ProductName">
+        <span asp-validation-for="ProductName" class="text-danger"></span>
 
         <label for="CatalogId">Catalog ID:</label>
-        <input type="number" id="catalogId" name="CatalogId" required>
+        <input type="number" id="catalogId" name="CatalogId">
 
         <label for="UnitPrice">Unit Price:</label>
-        <input type="number" id="unitPrice" name="UnitPrice" step="0.01" min="0" required>
+        <input type="number" id="unitPrice" asp-for="UnitPrice" name="UnitPrice" step="0.01" min="0">
+        <span asp-validation-for="UnitPrice" class="text-danger"></span>
 
         <label for="UnitInStock">Units In Stock:</label>
-        <input type="number" id="unitInStock" name="UnitInStock" min="0" required>
+        <input type="number" id="unitInStock" name="UnitInStock" min="0" >
 
         <input type="submit" value="Add Product">
     </form>
