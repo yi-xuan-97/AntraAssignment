@@ -9,10 +9,5 @@ public class CustomerRepository : BaseRepository<Customer>, ICustomerRepository
     public CustomerRepository(eShopDbContext eb) : base(eb)
     {
     }
-    // protected readonly CustomerRepository customerRepository;
-    //
-    // public CustomerRepository(CustomerRepository repo)
-    // {
-    //     customerRepository = repo;
-    // }
+
 }

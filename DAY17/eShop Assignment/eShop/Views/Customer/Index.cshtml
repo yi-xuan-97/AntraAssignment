@@ -1,0 +1,12 @@
+@model IEnumerable<Customer>
+<h5>@ViewBag.Title</h5>
+@{
+    <div style="display:flex; flex-direction:row;">
+        @foreach (var m in Model)
+        {
+            <partial name="_displayCard" model="@m"></partial>
+
+        }
+    </div>
+    
+}
