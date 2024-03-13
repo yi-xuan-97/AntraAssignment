@@ -1,0 +1,16 @@
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/Day18_Dapper/eShop/eShop.Infrustructure/bin/Debug/net8.0/eShop.Infrustructure.deps.json
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/Day18_Dapper/eShop/eShop.Infrustructure/bin/Debug/net8.0/eShop.Infrustructure.dll
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/Day18_Dapper/eShop/eShop.Infrustructure/bin/Debug/net8.0/eShop.Infrustructure.pdb
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/Day18_Dapper/eShop/eShop.Infrustructure/bin/Debug/net8.0/eShop.ApplicationCore.dll
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/Day18_Dapper/eShop/eShop.Infrustructure/bin/Debug/net8.0/eShop.ApplicationCore.pdb
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/Day18_Dapper/eShop/eShop.Infrustructure/obj/Debug/net8.0/eShop.Infrustructure.csproj.AssemblyReference.cache
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/Day18_Dapper/eShop/eShop.Infrustructure/obj/Debug/net8.0/eShop.Infrustructure.GeneratedMSBuildEditorConfig.editorconfig
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/Day18_Dapper/eShop/eShop.Infrustructure/obj/Debug/net8.0/eShop.Infrustructure.AssemblyInfoInputs.cache
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/Day18_Dapper/eShop/eShop.Infrustructure/obj/Debug/net8.0/eShop.Infrustructure.AssemblyInfo.cs
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/Day18_Dapper/eShop/eShop.Infrustructure/obj/Debug/net8.0/eShop.Infrustructure.csproj.CoreCompileInputs.cache
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/Day18_Dapper/eShop/eShop.Infrustructure/obj/Debug/net8.0/eShop.Infrustructure.sourcelink.json
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/Day18_Dapper/eShop/eShop.Infrustructure/obj/Debug/net8.0/eShop.In.622DB000.Up2Date
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/Day18_Dapper/eShop/eShop.Infrustructure/obj/Debug/net8.0/eShop.Infrustructure.dll
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/Day18_Dapper/eShop/eShop.Infrustructure/obj/Debug/net8.0/refint/eShop.Infrustructure.dll
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/Day18_Dapper/eShop/eShop.Infrustructure/obj/Debug/net8.0/eShop.Infrustructure.pdb
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/Day18_Dapper/eShop/eShop.Infrustructure/obj/Debug/net8.0/ref/eShop.Infrustructure.dll

@@ -1,0 +1,25 @@
+@model OrderDetail
+
+<form asp-controller="OrderDetail" asp-action="Create">
+    <div>
+        <label>OrderId</label>
+        <input type="text" asp-for="OrderId" class="form-control"/>
+    </div>
+    <div>
+        <label>ProductId</label>
+        <input type="text" asp-for="ProductId" class="form-control"/>
+    </div>
+    <div>
+        <label>Product</label>
+        <select asp-for="ProductId" asp-items="@ViewBag.Product" class="form-control" ></select>
+    </div>
+    <div>
+        <label>quantity</label>
+        <input type="text" asp-for="quantity" class="form-control"/>
+    </div>
+    <div>
+        <label>price</label>
+        <input type="text" asp-for="price" class="form-control"/>
+    </div>
+    <button class="btn-primary btn">Save</button>
+</form>

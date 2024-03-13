@@ -1,0 +1,32 @@
+@model IEnumerable<OrderDetail>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>OrderId</th>
+        <th>ProductId</th>
+        <th>Name</th>
+        <th>quantity</th>
+        <th>price</th>
+    </tr>
+    </thead>
+    <tbody>
+    @{
+        @foreach (var m in Model)
+        {
+            <tr>
+                <td>@m.Id</td>
+                <td>@m.OrderId</td>
+                <td>@m.ProductId</td>
+                <td>@m.Product.name</td>
+                <td>@m.quantity</td>
+                <td>@m.price</td>
+            </tr>
+
+        }
+    }
+
+    </tbody>
+</table>
+<a href="/OrderDetail/Create">Add new Order Detail</a>

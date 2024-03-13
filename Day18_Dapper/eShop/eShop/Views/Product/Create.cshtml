@@ -1,0 +1,22 @@
+@model Product
+
+<form asp-controller="Product" asp-action="Create">
+    <div>
+        <label>Name</label>
+        <input type="text" asp-for="name" class="form-control"/>
+    </div>
+    <div>
+        <label>Price</label>
+        <input type="text" asp-for="price" class="form-control"/>
+    </div>
+    <div>
+        <label>Description</label>
+        <input type="text" asp-for="description" class="form-control"/>
+        @* <select asp-for="" asp-items=" " class="form-control"></select> *@
+    </div>
+    <div>
+        <label>Catalog Id</label>
+        <input type="text" asp-for="category_id" class="form-control"/>
+    </div>
+    <button class="btn-primary btn">Save</button>
+</form>
