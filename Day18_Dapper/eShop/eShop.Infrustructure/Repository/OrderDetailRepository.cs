@@ -16,18 +16,18 @@ public class OrderDetailRepository: IOrderDetailRepository
     }
     public int Insert(OrderDetail entity)
     {
-        throw new NotImplementedException();
-    }
-
-    public int Update(OrderDetail entity)
-    {
         var conn = eShopDbContext.GetDbConnection();
-        return conn.Execute("sp_InsertProduct",
+        return conn.Execute("sp_InsertOrderDetail",
             new
             {
                 OrderId = entity.OrderId, price = entity.price, ProductId = entity.ProductId, quantity = entity.quantity
             }, commandType: CommandType.StoredProcedure);
-       
+        
+    }
+
+    public int Update(OrderDetail entity)
+    {
+        throw new NotImplementedException();
     }
 
     public int Delete(int id)

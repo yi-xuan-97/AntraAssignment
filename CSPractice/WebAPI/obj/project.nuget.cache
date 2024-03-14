@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "4BU3kqson8wxWWxurp4p75jsSFdsb+dlThN/t2QckqPF6i8jY+7/Zbc2Sbw5xub1RxbLaW+SX3B4E+RoFMDZYg==",
+  "success": true,
+  "projectFilePath": "/Users/yixuanfeng/Documents/GitHub/AntraAssignment/CSPractice/WebAPI/Webapi.csproj",
+  "expectedPackageFiles": [
+    "/Users/yixuanfeng/.nuget/packages/microsoft.extensions.apidescription.server/6.0.5/microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "/Users/yixuanfeng/.nuget/packages/microsoft.openapi/1.2.3/microsoft.openapi.1.2.3.nupkg.sha512",
+    "/Users/yixuanfeng/.nuget/packages/swashbuckle.aspnetcore/6.4.0/swashbuckle.aspnetcore.6.4.0.nupkg.sha512",
+    "/Users/yixuanfeng/.nuget/packages/swashbuckle.aspnetcore.swagger/6.4.0/swashbuckle.aspnetcore.swagger.6.4.0.nupkg.sha512",
+    "/Users/yixuanfeng/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.4.0/swashbuckle.aspnetcore.swaggergen.6.4.0.nupkg.sha512",
+    "/Users/yixuanfeng/.nuget/packages/swashbuckle.aspnetcore.swaggerui/6.4.0/swashbuckle.aspnetcore.swaggerui.6.4.0.nupkg.sha512"
+  ],
+  "logs": []
+}

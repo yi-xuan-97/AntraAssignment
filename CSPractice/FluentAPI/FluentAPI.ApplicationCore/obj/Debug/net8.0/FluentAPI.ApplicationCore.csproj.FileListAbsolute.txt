@@ -1,0 +1,15 @@
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/CSPractice/FluentAPI/FluentAPI.ApplicationCore/bin/Debug/net8.0/FluentAPI.ApplicationCore.deps.json
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/CSPractice/FluentAPI/FluentAPI.ApplicationCore/bin/Debug/net8.0/FluentAPI.ApplicationCore.runtimeconfig.json
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/CSPractice/FluentAPI/FluentAPI.ApplicationCore/bin/Debug/net8.0/FluentAPI.ApplicationCore.dll
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/CSPractice/FluentAPI/FluentAPI.ApplicationCore/bin/Debug/net8.0/FluentAPI.ApplicationCore.pdb
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/CSPractice/FluentAPI/FluentAPI.ApplicationCore/obj/Debug/net8.0/FluentAPI.ApplicationCore.csproj.AssemblyReference.cache
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/CSPractice/FluentAPI/FluentAPI.ApplicationCore/obj/Debug/net8.0/FluentAPI.ApplicationCore.GeneratedMSBuildEditorConfig.editorconfig
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/CSPractice/FluentAPI/FluentAPI.ApplicationCore/obj/Debug/net8.0/FluentAPI.ApplicationCore.AssemblyInfoInputs.cache
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/CSPractice/FluentAPI/FluentAPI.ApplicationCore/obj/Debug/net8.0/FluentAPI.ApplicationCore.AssemblyInfo.cs
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/CSPractice/FluentAPI/FluentAPI.ApplicationCore/obj/Debug/net8.0/FluentAPI.ApplicationCore.csproj.CoreCompileInputs.cache
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/CSPractice/FluentAPI/FluentAPI.ApplicationCore/obj/Debug/net8.0/FluentAPI.ApplicationCore.sourcelink.json
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/CSPractice/FluentAPI/FluentAPI.ApplicationCore/obj/Debug/net8.0/FluentAPI.ApplicationCore.dll
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/CSPractice/FluentAPI/FluentAPI.ApplicationCore/obj/Debug/net8.0/refint/FluentAPI.ApplicationCore.dll
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/CSPractice/FluentAPI/FluentAPI.ApplicationCore/obj/Debug/net8.0/FluentAPI.ApplicationCore.pdb
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/CSPractice/FluentAPI/FluentAPI.ApplicationCore/obj/Debug/net8.0/FluentAPI.ApplicationCore.genruntimeconfig.cache
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/CSPractice/FluentAPI/FluentAPI.ApplicationCore/obj/Debug/net8.0/ref/FluentAPI.ApplicationCore.dll
