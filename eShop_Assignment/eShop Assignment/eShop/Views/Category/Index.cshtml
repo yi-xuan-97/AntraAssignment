@@ -1,0 +1,38 @@
+@model IEnumerable<Category>
+
+@foreach(var category in Model){
+    <h1>@category.Name</h1>
+    <h3>@category.Description</h3>
+    <p>@category.Products.Count</p>
+@* <table> *@
+@*     <tr> *@
+@*         <th>Product Id</th> *@
+@*         <th>Product Name</th> *@
+@*         <th>Price</th> *@
+@*         <th>Description</th> *@
+@*         <th>Unit In Stock</th> *@
+@*         <th></th> *@
+@*     </tr> *@
+@*     @foreach (var product in category.Products) *@
+@*     { *@
+@*         <tr> *@
+@*             <td>@product.Id</td> *@
+@*             <td>@product.Name</td> *@
+@*             <td>@product.Price</td> *@
+@*             <td>@product.Description</td> *@
+@*             <td>@product.StockQuantity</td> *@
+@*             <td> *@
+@*                 $1$ <a href="/Product/Delete/@product.Id" class="btn-danger btn">Delete</a> #1# *@
+@*                 $1$ <a href="/Product/Edit/@product.Id" class="btn-warning btn">Edit</a> #1# *@
+@*                 <a asp-action="Delete" asp-controller="Product" asp-route-id="@product.Id" class="btn-danger btn">Delete</a> *@
+@*                 <a asp-action="Edit" asp-controller="Product" asp-route-id="@product.Id" class="btn-warning btn">Edit</a> *@
+@*             </td> *@
+@*         </tr> *@
+@*     } *@
+@* *@
+@* </table> *@
+@* <a asp-action="Add" asp-controller="Product">Add Product</a> *@
+@* <a href="/Product/AddProduct">Add Product</a> *@
+<button class="add-button" onclick="location.href='@Url.Action("Add", "Product")'">Add Product</button>
+
+}
