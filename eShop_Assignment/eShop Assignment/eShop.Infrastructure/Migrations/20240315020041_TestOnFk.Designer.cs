@@ -12,8 +12,8 @@ using eShop.Infrastructure.Data;
 namespace eShop.Infrastructure.Migrations
 {
     [DbContext(typeof(eShopDbContext))]
-    [Migration("20240314235958_Test")]
-    partial class Test
+    [Migration("20240315020041_TestOnFk")]
+    partial class TestOnFk
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

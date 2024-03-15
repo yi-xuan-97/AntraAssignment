@@ -1,3 +1,4 @@
+using eShop.ApplicationCore.Entities;
 using eShop.ApplicationCore.RepositoryInterface;
 using eShop.Infrastructure.Repository;
 using Microsoft.AspNetCore.Mvc;
@@ -13,11 +14,43 @@ public class CustomerController : Controller
         customerRepository = repo;
     }
     // GET
+    [HttpGet]
     public IActionResult Index()
     {
-        ViewBag.Title = "Customer List";
-        ViewData["Title"] = "Customer List";
-        var result = customerRepository.GetAll();
+        return View();
+    }
+
+    [HttpPost]
+    public IActionResult Index(int id)
+    {
+        TempData["uid"] = id;
+        return RedirectToAction("Display", new { id = id });
+    }
+
+    public IActionResult Display(int id)
+    {
+        var result = customerRepository.GetById(id);
         return View(result);
+    }
+
+    [HttpGet]
+    public IActionResult Edit(int id)
+    {
+        var result = customerRepository.GetById(id);
+        return View(result);
+    }
+
+    [HttpPost]
+    public IActionResult Edit(Customer obj)
+    {
+        try
+        {
+            customerRepository.Update(obj);
+            return RedirectToAction("Display", new { id = obj.Id });
+        }
+        catch (Exception ex)
+        {
+            return View("Index");
+        }
     }
 }

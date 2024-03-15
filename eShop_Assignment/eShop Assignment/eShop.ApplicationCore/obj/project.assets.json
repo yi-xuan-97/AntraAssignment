@@ -4022,11 +4022,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/yixuanfeng/Documents/GitHub/AntraAssignment/DAY17/eShop Assignment/eShop.ApplicationCore/eShop.ApplicationCore.csproj",
+      "projectUniqueName": "/Users/yixuanfeng/Documents/GitHub/AntraAssignment/eShop_Assignment/eShop Assignment/eShop.ApplicationCore/eShop.ApplicationCore.csproj",
       "projectName": "eShop.ApplicationCore",
-      "projectPath": "/Users/yixuanfeng/Documents/GitHub/AntraAssignment/DAY17/eShop Assignment/eShop.ApplicationCore/eShop.ApplicationCore.csproj",
+      "projectPath": "/Users/yixuanfeng/Documents/GitHub/AntraAssignment/eShop_Assignment/eShop Assignment/eShop.ApplicationCore/eShop.ApplicationCore.csproj",
       "packagesPath": "/Users/yixuanfeng/.nuget/packages/",
-      "outputPath": "/Users/yixuanfeng/Documents/GitHub/AntraAssignment/DAY17/eShop Assignment/eShop.ApplicationCore/obj/",
+      "outputPath": "/Users/yixuanfeng/Documents/GitHub/AntraAssignment/eShop_Assignment/eShop Assignment/eShop.ApplicationCore/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/yixuanfeng/.nuget/NuGet/NuGet.Config"

@@ -30,4 +30,8 @@
       <ProjectReference Include="..\eShop.Infrastructure\eShop.Infrastructure.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="Views\Payment\Index.cshtml" />
+    </ItemGroup>
+
 </Project>

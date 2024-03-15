@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "uLXi8CLEDJXzKOm9CNxwQriaWuFMNMGl+K8z8kKWjvFA8dTMbKdE3i7UbUwyv4v8oeiVWDB6s6dhq/JuV/6W8g==",
+  "dgSpecHash": "OISSZVyxZQHSb3XG6Y1n3OI+gicjlgU+Mycj0aORPDX/lpENzH9ETZvDYGPZ+zOofNgQLtmmy/KyyxigfBZ8Aw==",
   "success": true,
-  "projectFilePath": "/Users/yixuanfeng/Documents/GitHub/AntraAssignment/DAY17/eShop Assignment/eShop/eShop.csproj",
+  "projectFilePath": "/Users/yixuanfeng/Documents/GitHub/AntraAssignment/eShop_Assignment/eShop Assignment/eShop/eShop.csproj",
   "expectedPackageFiles": [
     "/Users/yixuanfeng/.nuget/packages/azure.core/1.25.0/azure.core.1.25.0.nupkg.sha512",
     "/Users/yixuanfeng/.nuget/packages/azure.identity/1.7.0/azure.identity.1.7.0.nupkg.sha512",

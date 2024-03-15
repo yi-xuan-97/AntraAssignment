@@ -48,8 +48,8 @@ public class ShipperController : Controller
     [HttpGet]
     public IActionResult Edit(int id)
     {
-        var product = _shipperRepository.GetById(id);
-        return View(product);
+        var result = _shipperRepository.GetById(id);
+        return View(result);
     }
 
     [HttpPost]
