@@ -1,6 +1,8 @@
 using eShop.ApplicationCore.RepositoryInterface;
+using eShop.ApplicationCore.ServiceInterface;
 using eShop.Infrastructure.Data;
 using eShop.Infrastructure.Repository;
+using eShop.Infrastructure.Service;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +17,7 @@ builder.Services.AddDbContext<eShopDbContext>(option =>
     option.UseSqlServer(builder.Configuration.GetConnectionString("eShopDbConnection"));
 });
 
+//Repository
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
@@ -22,6 +25,20 @@ builder.Services.AddScoped<IShipperRepository, ShipperRepository>();
 builder.Services.AddScoped<IPromotionRepository, PromotionRepository>();
 builder.Services.AddScoped<IShoppingCartRepository, ShoppingCartRepository>();
 builder.Services.AddScoped<ICartItemRepository, CartItemRepository>();
+
+//Services
+builder.Services.AddScoped<IShoppingCartService, ShoppingCartService>();
+
+//Add Session
+builder.Services.AddDistributedMemoryCache();
+
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromSeconds(10);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
+
 
 var app = builder.Build();
 
@@ -33,12 +50,17 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+//Use Session
+
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
 
 app.UseAuthorization();
+
+app.UseSession();
 
 app.MapControllerRoute(
     name: "default",

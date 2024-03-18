@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "aqXX1mxEys9G4aQwHIKnnKYe4a8ebRaqD4iZ8hVFLga6JDKzWUQ/bOgmgRB6BXfPXV7ub1nFJv4mGm3gUiOsFA==",
+  "dgSpecHash": "BaV1AGiUab8Kyi5wV415eMIDehG31H2qCE7Qrjo3Atti2k5OEynSArz314b/+6+5IL41QcL2PcHu4TlJ4zeUlQ==",
   "success": true,
-  "projectFilePath": "/Users/yixuanfeng/Documents/GitHub/AntraAssignment/Day18_Dapper/eShop/eShop.ApplicationCore/eShop.ApplicationCore.csproj",
+  "projectFilePath": "/Users/yixuanfeng/Documents/GitHub/AntraAssignment/Dapper_Assignment/eShop/eShop.ApplicationCore/eShop.ApplicationCore.csproj",
   "expectedPackageFiles": [
     "/Users/yixuanfeng/.nuget/packages/dapper/2.1.35/dapper.2.1.35.nupkg.sha512",
     "/Users/yixuanfeng/.nuget/packages/microsoft.extensions.configuration/8.0.0/microsoft.extensions.configuration.8.0.0.nupkg.sha512",

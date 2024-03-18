@@ -1,4 +1,6 @@
+using eShop.ApplicationCore.Entities;
 using eShop.ApplicationCore.RepositoryInterface;
+using eShop.ApplicationCore.ServiceInterface;
 using eShop.Infrastructure.Repository;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,25 +8,31 @@ namespace eShop.Controllers;
 
 public class ShoppingCartController : Controller
 {
-    private readonly IShoppingCartRepository _shoppingCartRepository;
-    private readonly ICartItemRepository _cartItemRepository;
-    public ShoppingCartController(IShoppingCartRepository repo)
+    private IShoppingCartService _shoppingCartService;
+    public ShoppingCartController(IShoppingCartService repo)
     {
-        _shoppingCartRepository = repo;
+        _shoppingCartService = repo;
     }
     // GET
     public IActionResult Index()
     {
-        var shoppingCart = _shoppingCartRepository.GetByCustomerId((int)TempData["uid"]).Id;
-        var result = _cartItemRepository.GetbyShoppingCartId(shoppingCart);
-        return View(result);
-        try
+        if ( HttpContext.Session.GetInt32("uid") != null)
         {
-            
+            var result = _shoppingCartService.GetAllProducts((int)HttpContext.Session.GetInt32("uid"));
+            return View(result);
         }
-        catch (Exception ex)
+
+        return View();
+    }
+
+    public IActionResult CheckOut()
+    {
+        if (HttpContext.Session.GetInt32("uid") != null && _shoppingCartService != null)
         {
-            return View();
+            var result = _shoppingCartService.GetTotal((int)HttpContext.Session.GetInt32("uid"));
+            return View(result);
         }
+        
+        return View(0);
     }
 }

@@ -23,7 +23,7 @@ public class CustomerController : Controller
     [HttpPost]
     public IActionResult Index(int id)
     {
-        TempData["uid"] = id;
+        HttpContext.Session.SetInt32("uid",id);
         return RedirectToAction("Display", new { id = id });
     }
 

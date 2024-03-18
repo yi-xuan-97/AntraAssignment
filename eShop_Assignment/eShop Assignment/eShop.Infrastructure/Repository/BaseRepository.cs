@@ -32,7 +32,7 @@ public class BaseRepository<T>:IRepository<T> where T: class
         return _context.SaveChanges();
     }
 
-    public IEnumerable<T> GetAll()
+    public virtual IEnumerable<T> GetAll()
     {
         //without ToList() our code will be exucute but will not give us a result
         //delay execution

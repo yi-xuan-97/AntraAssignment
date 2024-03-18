@@ -656,11 +656,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/yixuanfeng/Documents/GitHub/AntraAssignment/Day18_Dapper/eShop/eShop.ApplicationCore/eShop.ApplicationCore.csproj",
+      "projectUniqueName": "/Users/yixuanfeng/Documents/GitHub/AntraAssignment/Dapper_Assignment/eShop/eShop.ApplicationCore/eShop.ApplicationCore.csproj",
       "projectName": "eShop.ApplicationCore",
-      "projectPath": "/Users/yixuanfeng/Documents/GitHub/AntraAssignment/Day18_Dapper/eShop/eShop.ApplicationCore/eShop.ApplicationCore.csproj",
+      "projectPath": "/Users/yixuanfeng/Documents/GitHub/AntraAssignment/Dapper_Assignment/eShop/eShop.ApplicationCore/eShop.ApplicationCore.csproj",
       "packagesPath": "/Users/yixuanfeng/.nuget/packages/",
-      "outputPath": "/Users/yixuanfeng/Documents/GitHub/AntraAssignment/Day18_Dapper/eShop/eShop.ApplicationCore/obj/",
+      "outputPath": "/Users/yixuanfeng/Documents/GitHub/AntraAssignment/Dapper_Assignment/eShop/eShop.ApplicationCore/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/yixuanfeng/.nuget/NuGet/NuGet.Config"
