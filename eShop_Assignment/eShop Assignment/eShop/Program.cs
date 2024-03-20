@@ -18,16 +18,16 @@ builder.Services.AddDbContext<eShopDbContext>(option =>
 });
 
 //Repository
-builder.Services.AddScoped<IProductRepository, ProductRepository>();
-builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
-builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
-builder.Services.AddScoped<IShipperRepository, ShipperRepository>();
-builder.Services.AddScoped<IPromotionRepository, PromotionRepository>();
-builder.Services.AddScoped<IShoppingCartRepository, ShoppingCartRepository>();
-builder.Services.AddScoped<ICartItemRepository, CartItemRepository>();
+builder.Services.AddScoped<IProductRepositoryAsync, ProductRepositoryAsync>();
+builder.Services.AddScoped<ICustomerRepositoryAsync, CustomerRepositoryAsync>();
+builder.Services.AddScoped<ICategoryRepositoryAsync, CategoryRepositoryAsync>();
+builder.Services.AddScoped<IShipperRepositoryAsync, ShipperRepositoryAsync>();
+builder.Services.AddScoped<IPromotionRepositoryAsync, PromotionRepositoryAsync>();
+builder.Services.AddScoped<IShoppingCartRepositoryAsync, ShoppingCartRepositoryAsync>();
+builder.Services.AddScoped<ICartItemRepositoryAsync, CartItemRepositoryAsync>();
 
 //Services
-builder.Services.AddScoped<IShoppingCartService, ShoppingCartService>();
+builder.Services.AddScoped<IShoppingCartServiceAsync, ShoppingCartServiceAsync>();
 
 //Add Session
 builder.Services.AddDistributedMemoryCache();

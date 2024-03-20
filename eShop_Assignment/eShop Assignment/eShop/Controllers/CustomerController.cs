@@ -7,11 +7,11 @@ namespace eShop.Controllers;
 
 public class CustomerController : Controller
 {
-    protected readonly ICustomerRepository customerRepository;
+    protected readonly ICustomerRepositoryAsync CustomerRepositoryAsync;
     
-    public CustomerController(ICustomerRepository repo)
+    public CustomerController(ICustomerRepositoryAsync repo)
     {
-        customerRepository = repo;
+        CustomerRepositoryAsync = repo;
     }
     // GET
     [HttpGet]
@@ -27,25 +27,25 @@ public class CustomerController : Controller
         return RedirectToAction("Display", new { id = id });
     }
 
-    public IActionResult Display(int id)
+    public async Task<IActionResult> Display(int id)
     {
-        var result = customerRepository.GetById(id);
+        var result = await CustomerRepositoryAsync.GetByIdAsync(id);
         return View(result);
     }
 
     [HttpGet]
-    public IActionResult Edit(int id)
+    public async Task<IActionResult> Edit(int id)
     {
-        var result = customerRepository.GetById(id);
+        var result = await CustomerRepositoryAsync.GetByIdAsync(id);
         return View(result);
     }
 
     [HttpPost]
-    public IActionResult Edit(Customer obj)
+    public async Task<IActionResult> Edit(Customer obj)
     {
         try
         {
-            customerRepository.Update(obj);
+            await CustomerRepositoryAsync.UpdateAsync(obj);
             return RedirectToAction("Display", new { id = obj.Id });
         }
         catch (Exception ex)

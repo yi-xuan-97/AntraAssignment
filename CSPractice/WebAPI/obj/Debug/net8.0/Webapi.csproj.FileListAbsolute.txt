@@ -31,3 +31,4 @@
 /Users/yixuanfeng/Documents/GitHub/AntraAssignment/CSPractice/Webapi/obj/Debug/net8.0/Webapi.pdb
 /Users/yixuanfeng/Documents/GitHub/AntraAssignment/CSPractice/WebAPI/obj/Debug/net8.0/Webapi.genruntimeconfig.cache
 /Users/yixuanfeng/Documents/GitHub/AntraAssignment/CSPractice/WebAPI/obj/Debug/net8.0/ref/Webapi.dll
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/CSPractice/Webapi/bin/Debug/net8.0/AutoMapper.dll

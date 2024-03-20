@@ -5,19 +5,19 @@ namespace eShop.Controllers;
 
 public class CategoryController : Controller
 {
-    private readonly IProductRepository _productRepository;
-    private readonly ICategoryRepository _categoryRepository;
+    private readonly IProductRepositoryAsync _productRepositoryAsync;
+    private readonly ICategoryRepositoryAsync _categoryRepositoryAsync;
 
-    public CategoryController(IProductRepository prepo, ICategoryRepository crepo)
+    public CategoryController(IProductRepositoryAsync prepo, ICategoryRepositoryAsync crepo)
     {
-        _productRepository = prepo;
-        _categoryRepository = crepo;
+        _productRepositoryAsync = prepo;
+        _categoryRepositoryAsync = crepo;
     }
     
     // GET
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
-        var result = _categoryRepository.GetAll();
+        var result = await _categoryRepositoryAsync.GetAllAsync();
         return View(result);
     }
 }

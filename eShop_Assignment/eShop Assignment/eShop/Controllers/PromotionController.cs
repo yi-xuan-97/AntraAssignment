@@ -6,20 +6,24 @@ namespace eShop.Controllers;
 
 public class PromotionController : Controller
 {
-    private readonly IPromotionRepository _promotionRepository;
+    private readonly IPromotionRepositoryAsync _promotionRepositoryAsync;
 
-    public PromotionController(IPromotionRepository repo)
+    public PromotionController(IPromotionRepositoryAsync repo)
     {
-        _promotionRepository = repo;
+        _promotionRepositoryAsync = repo;
     }
     // GET
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
+        var allPromotions = await _promotionRepositoryAsync.GetAllAsync();
 
-        ViewBag.availablePromotion = _promotionRepository.GetAll()
-            .Where(x=> x.StartDate<DateTime.Now && x.EndDate>DateTime.Now);
-        ViewBag.nonavailablePromotion = _promotionRepository.GetAll()
-            .Where(x=> x.StartDate>DateTime.Now);
+        ViewBag.availablePromotion = allPromotions
+            .Where(x => x.StartDate < DateTime.Now && x.EndDate > DateTime.Now)
+            .ToList();
+
+        ViewBag.nonavailablePromotion = allPromotions
+            .Where(x => x.StartDate > DateTime.Now)
+            .ToList();
         
         return View(ViewBag);
     }
@@ -31,13 +35,13 @@ public class PromotionController : Controller
     }
 
     [HttpPost]
-    public IActionResult Add(Promotion obj)
+    public async Task<IActionResult> Add(Promotion obj)
     {
         if (ModelState.IsValid)
         {
             try
             {
-                _promotionRepository.Insert(obj);
+                await _promotionRepositoryAsync.InsertAsync(obj);
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
@@ -51,18 +55,18 @@ public class PromotionController : Controller
 
 
     [HttpGet]
-    public IActionResult Edit(int id)
+    public async Task<IActionResult> Edit(int id)
     {
-        var result = _promotionRepository.GetById(id);
+        var result = await _promotionRepositoryAsync.GetByIdAsync(id);
         return View(result);
     }
 
     [HttpPost]
-    public IActionResult Edit(Promotion obj)
+    public async Task<IActionResult> Edit(Promotion obj)
     {
         try
         {
-            _promotionRepository.Update(obj);
+            await _promotionRepositoryAsync.UpdateAsync(obj);
             return RedirectToAction("Index");
         }
         catch (Exception ex)

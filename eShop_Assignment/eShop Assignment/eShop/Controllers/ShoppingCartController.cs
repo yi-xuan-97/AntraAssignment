@@ -8,28 +8,28 @@ namespace eShop.Controllers;
 
 public class ShoppingCartController : Controller
 {
-    private IShoppingCartService _shoppingCartService;
-    public ShoppingCartController(IShoppingCartService repo)
+    private IShoppingCartServiceAsync _shoppingCartServiceAsync;
+    public ShoppingCartController(IShoppingCartServiceAsync repo)
     {
-        _shoppingCartService = repo;
+        _shoppingCartServiceAsync = repo;
     }
     // GET
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
         if ( HttpContext.Session.GetInt32("uid") != null)
         {
-            var result = _shoppingCartService.GetAllProducts((int)HttpContext.Session.GetInt32("uid"));
+            var result = await _shoppingCartServiceAsync.GetAllProductsAsync((int)HttpContext.Session.GetInt32("uid"));
             return View(result);
         }
 
         return View();
     }
 
-    public IActionResult CheckOut()
+    public async Task<IActionResult> CheckOut()
     {
-        if (HttpContext.Session.GetInt32("uid") != null && _shoppingCartService != null)
+        if (HttpContext.Session.GetInt32("uid") != null && _shoppingCartServiceAsync != null)
         {
-            var result = _shoppingCartService.GetTotal((int)HttpContext.Session.GetInt32("uid"));
+            var result = await _shoppingCartServiceAsync.GetTotalAsync((int)HttpContext.Session.GetInt32("uid"));
             return View(result);
         }
         

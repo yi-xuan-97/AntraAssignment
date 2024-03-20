@@ -6,16 +6,16 @@ namespace eShop.Controllers;
 
 public class ShipperController : Controller
 {
-    private readonly IShipperRepository _shipperRepository;
+    private readonly IShipperRepositoryAsync _shipperRepositoryAsync;
 
-    public ShipperController(IShipperRepository repo)
+    public ShipperController(IShipperRepositoryAsync repo)
     {
-        _shipperRepository = repo;
+        _shipperRepositoryAsync = repo;
     }
     // GET
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
-        var result = _shipperRepository.GetAll();
+        var result = await _shipperRepositoryAsync.GetAllAsync();
         return View(result);
     }
 
@@ -26,13 +26,13 @@ public class ShipperController : Controller
     }
 
     [HttpPost]
-    public IActionResult Add(Shipper obj)
+    public async Task<IActionResult> Add(Shipper obj)
     {
         if (ModelState.IsValid)
         {
             try
             {
-                _shipperRepository.Insert(obj);
+                await _shipperRepositoryAsync.InsertAsync(obj);
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
@@ -46,18 +46,18 @@ public class ShipperController : Controller
     
 
     [HttpGet]
-    public IActionResult Edit(int id)
+    public async Task<IActionResult> Edit(int id)
     {
-        var result = _shipperRepository.GetById(id);
+        var result = await _shipperRepositoryAsync.GetByIdAsync(id);
         return View(result);
     }
 
     [HttpPost]
-    public IActionResult Edit(Shipper obj)
+    public async Task<IActionResult> Edit(Shipper obj)
     {
         try
         {
-            _shipperRepository.Update(obj);
+            await _shipperRepositoryAsync.UpdateAsync(obj);
             return RedirectToAction("Index");
         }
         catch (Exception ex)

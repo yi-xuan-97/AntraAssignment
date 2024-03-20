@@ -1,0 +1,21 @@
+# This is a generated file. Not intended for manual editing.
+services:
+  eshop.api:
+    build:
+      context: "/Users/yixuanfeng/Documents/GitHub/AntraAssignment/eShop.API"
+      dockerfile: "eShop.API/Dockerfile"
+      target: "base"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net8.0/eShop.API.dll"
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+    image: "eshop.api:dev"
+    ports: []
+    volumes:
+    - "/Users/yixuanfeng/.nuget/packages:/home/app/.nuget/packages"
+    - "/Users/yixuanfeng/Documents/GitHub/AntraAssignment/eShop.API/eShop.API:/app:rw"
+    - "/Users/yixuanfeng/Documents/GitHub/AntraAssignment/eShop.API:/src:rw"
+    working_dir: "/app"

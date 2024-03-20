@@ -27,7 +27,6 @@
                 <th>Product Name</th>
                 <th>Price</th>
                 <th>Description</th>
-                <th>Unit In Stock</th>
                 <th></th>
             </tr>
             @foreach (var item in Model)
@@ -37,7 +36,6 @@
                     <td>@item.Name</td>
                     <td>@item.Price</td>
                     <td>@item.Description</td>
-                    <td>@item.StockQuantity</td>
                     <td>
                         <a  asp-action="Delete" asp-controller="Product" asp-route-id="@item.Id" class="btn-danger btn">Delete</a>
                     </td>

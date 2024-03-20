@@ -8,17 +8,17 @@ namespace eShop.Controllers;
 
 public class ProductController : Controller
 {
-    private readonly IProductRepository productRepository;
-    private readonly IShoppingCartService _shoppingCartService;
-    public ProductController(IProductRepository repo, IShoppingCartService srepo)
+    private readonly IProductRepositoryAsync _productRepositoryAsync;
+    private readonly IShoppingCartServiceAsync _shoppingCartServiceAsync;
+    public ProductController(IProductRepositoryAsync repo, IShoppingCartServiceAsync srepo)
     {
-        productRepository = repo;
-        _shoppingCartService = srepo;
+        _productRepositoryAsync = repo;
+        _shoppingCartServiceAsync = srepo;
     }
     // GET
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
-        var content = productRepository.GetAll();
+        var content = await _productRepositoryAsync.GetAllAsync();
         return View(content);
     }
 
@@ -29,13 +29,13 @@ public class ProductController : Controller
     }
 
     [HttpPost]
-    public IActionResult Add(Product obj)
+    public async Task<IActionResult> Add(Product obj)
     {
         if (ModelState.IsValid)
         {
             try
             {
-                productRepository.Insert(obj);
+                await _productRepositoryAsync.InsertAsync(obj);
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
@@ -48,32 +48,32 @@ public class ProductController : Controller
     }
 
     [HttpGet]
-    public IActionResult Delete(int id)
+    public async Task<IActionResult> Delete(int id)
     {
-        var product = productRepository.GetById(id);
+        var product = await _productRepositoryAsync.GetByIdAsync(id);
         return View(product);
     }
 
     [HttpPost]
-    public IActionResult Delete(Product obj)
+    public async Task<IActionResult> Delete(Product obj)
     {
-        productRepository.Delete(obj.Id);
+        await _productRepositoryAsync.DeleteAsync(obj.Id);
         return RedirectToAction("Index");
     }
 
     [HttpGet]
-    public IActionResult Edit(int id)
+    public async Task<IActionResult> Edit(int id)
     {
-        var product = productRepository.GetById(id);
+        var product = await _productRepositoryAsync.GetByIdAsync(id);
         return View(product);
     }
 
     [HttpPost]
-    public IActionResult Edit(Product obj)
+    public async Task<IActionResult> Edit(Product obj)
     {
         try
         {
-            productRepository.Update(obj);
+            await _productRepositoryAsync.UpdateAsync(obj);
             return RedirectToAction("Index");
         }
         catch(Exception ex)
@@ -83,14 +83,14 @@ public class ProductController : Controller
     }
     
     [HttpGet]
-    public IActionResult AddCart(int id)
+    public async Task<IActionResult> AddCart(int id)
     {
-        var result = productRepository.GetById(id);
+        var result = await _productRepositoryAsync.GetByIdAsync(id);
         return View(result);
     }
     
     [HttpPost]
-    public IActionResult AddToCart(int id)
+    public async Task<IActionResult> AddToCart(int id)
     {
         if (!ModelState.IsValid)
         {
@@ -106,7 +106,7 @@ public class ProductController : Controller
         }
 
         // If the user is logged in, add the product to the cart
-        _shoppingCartService.AddToCart(userId.Value, id);
+        _shoppingCartServiceAsync.AddToCartAsync(userId.Value, id);
 
         // Redirect to the shopping cart index page
         return RedirectToAction("Index", "ShoppingCart");
