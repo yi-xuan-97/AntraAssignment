@@ -14,11 +14,17 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddHttpClient();
 
 builder.Services.AddDbContext<eShopDbContext>(option =>
 {
     option.UseSqlServer(builder.Configuration.GetConnectionString("eShopDbConnection"));
 });
+
+// builder.Services.AddDbContext<eShopDbContext>(option =>
+// {
+//     option.UseSqlServer(Environment.GetEnvironmentVariable("eShopDb"));
+// });
 
 builder.Services.AddScoped<IProductRepositoryAsync, ProductRepositoryAsync>();
 builder.Services.AddScoped<IProductServiceAsync, ProductServiceAsync>();

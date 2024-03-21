@@ -4,3 +4,5 @@
     build:
       context: .
       dockerfile: eShop.API/Dockerfile
+    ports:
+      - "65120:80"
