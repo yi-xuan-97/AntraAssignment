@@ -2,7 +2,14 @@
 INSERT INTO Products (Name, Description, Price, Category, Stock)
 VALUES ('Smartphone', 'Latest smartphone with great features', 799.99, 'Electronics', 100),
        ('Laptop', 'High-performance laptop for professionals', 1299.99, 'Electronics', 50),
-       ('Headphones', 'Wireless headphones with noise cancellation', 199.99, 'Electronics', 75);
+       ('Headphones', 'Wireless headphones with noise cancellation', 199.99, 'Electronics', 75),
+       ('Coffee Maker', 'Programmable coffee maker with thermal carafe', 79.99, 'Appliances', 40),
+        ('Running Shoes', 'Premium running shoes with cushioned soles', 99.99, 'Footwear', 100),
+        ('Backpack', 'Waterproof backpack with multiple compartments', 49.99, 'Accessories', 120),
+        ('Tablet', '10-inch tablet with high-resolution display', 299.99, 'Electronics', 25),
+        ('Blender', 'Powerful blender for making smoothies and shakes', 59.99, 'Appliances', 35),
+        ('Hiking Boots', 'Durable hiking boots with waterproof membrane', 129.99, 'Footwear', 80),
+        ('Watch', 'Stylish watch with stainless steel band', 199.99, 'Accessories', 70);
 
 -- Create sample data for Shippers table
 INSERT INTO Shippers (Name, ContactInformation)
