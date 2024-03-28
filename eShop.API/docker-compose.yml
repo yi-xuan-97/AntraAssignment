@@ -1,26 +1,50 @@
 ﻿services:
-  product.api:
-    image: product.api
+  authentication:
+    image: authentication
     build:
       context: .
-      dockerfile: Product.API/Dockerfile
+      dockerfile: Authentication/Dockerfile
+      platforms:
+        - linux/amd64
 
   apigetwayservice:
     image: apigetwayservice
     build:
       context: .
       dockerfile: ApiGetwayService/Dockerfile
+      platforms:
+        - linux/amd64
     ports:
-      - '8002:80'
+      - '61000:8080'
 
-  authentication.api:
-    image: authentication.api
+  customer:
+    image: customer
     build:
       context: .
-      dockerfile: Authentication.API/Dockerfile
+      dockerfile: Customer/Dockerfile
+      platforms:
+        - linux/amd64
 
-  customer.api:
-    image: customer.api
+  order:
+    image: order
     build:
       context: .
-      dockerfile: Customer.API/Dockerfile
+      dockerfile: Order/Dockerfile
+      platforms:
+        - linux/amd64
+
+  product:
+    image: product
+    build:
+      context: .
+      dockerfile: Product/Dockerfile
+      platforms:
+        - linux/amd64
+
+  inventory:
+    image: inventory
+    build:
+      context: .
+      dockerfile: Inventory/Dockerfile
+      platforms:
+        - linux/amd64

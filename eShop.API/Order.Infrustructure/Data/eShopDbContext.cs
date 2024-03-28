@@ -10,5 +10,5 @@ public class eShopDbContext: DbContext
 
     }
 
-    public DbSet<ApplicationCore.Entity.Order> Orders { get; set; }
+    public DbSet<Orders> Orders { get; set; }
 }

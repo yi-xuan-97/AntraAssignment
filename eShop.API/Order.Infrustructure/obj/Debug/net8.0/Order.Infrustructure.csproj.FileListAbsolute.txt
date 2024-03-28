@@ -14,3 +14,5 @@
 /Users/yixuanfeng/Documents/GitHub/AntraAssignment/eShop.API/Order.Infrustructure/obj/Debug/net8.0/refint/Order.Infrustructure.dll
 /Users/yixuanfeng/Documents/GitHub/AntraAssignment/eShop.API/Order.Infrustructure/obj/Debug/net8.0/Order.Infrustructure.pdb
 /Users/yixuanfeng/Documents/GitHub/AntraAssignment/eShop.API/Order.Infrustructure/obj/Debug/net8.0/ref/Order.Infrustructure.dll
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/eShop.API/Order.Infrustructure/bin/Debug/net8.0/Order.Infrustructure.runtimeconfig.json
+/Users/yixuanfeng/Documents/GitHub/AntraAssignment/eShop.API/Order.Infrustructure/obj/Debug/net8.0/Order.Infrustructure.genruntimeconfig.cache
