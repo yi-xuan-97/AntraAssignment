@@ -4,16 +4,12 @@
     build:
       context: .
       dockerfile: Authentication/Dockerfile
-      platforms:
-        - linux/amd64
 
   apigetwayservice:
     image: apigetwayservice
     build:
       context: .
       dockerfile: ApiGetwayService/Dockerfile
-      platforms:
-        - linux/amd64
     ports:
       - '61000:8080'
 
@@ -22,29 +18,22 @@
     build:
       context: .
       dockerfile: Customer/Dockerfile
-      platforms:
-        - linux/amd64
 
   order:
     image: order
     build:
       context: .
       dockerfile: Order/Dockerfile
-      platforms:
-        - linux/amd64
 
   product:
     image: product
     build:
       context: .
       dockerfile: Product/Dockerfile
-      platforms:
-        - linux/amd64
 
   inventory:
     image: inventory
     build:
       context: .
       dockerfile: Inventory/Dockerfile
-      platforms:
-        - linux/amd64
+
