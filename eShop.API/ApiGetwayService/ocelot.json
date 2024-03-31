@@ -52,7 +52,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "product",
-          "Port": 8080
+          "Port": 80
         }
       ],
       "DownstreamPathTemplate": "/api/product"
@@ -67,7 +67,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "product",
-          "Port": 8080
+          "Port": 80
         }
       ],
       "DownstreamPathTemplate": "/api/product/{id}",
