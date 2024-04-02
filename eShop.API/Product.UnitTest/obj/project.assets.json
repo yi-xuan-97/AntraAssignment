@@ -5968,11 +5968,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/yixuanfeng/Documents/GitHub/AntraAssignment/eShop.API/Prodduct.UnitTest/Prodduct.UnitTest.csproj",
-      "projectName": "Prodduct.UnitTest",
-      "projectPath": "/Users/yixuanfeng/Documents/GitHub/AntraAssignment/eShop.API/Prodduct.UnitTest/Prodduct.UnitTest.csproj",
+      "projectUniqueName": "/Users/yixuanfeng/Documents/GitHub/AntraAssignment/eShop.API/Product.UnitTest/Product.UnitTest.csproj",
+      "projectName": "Product.UnitTest",
+      "projectPath": "/Users/yixuanfeng/Documents/GitHub/AntraAssignment/eShop.API/Product.UnitTest/Product.UnitTest.csproj",
       "packagesPath": "/Users/yixuanfeng/.nuget/packages/",
-      "outputPath": "/Users/yixuanfeng/Documents/GitHub/AntraAssignment/eShop.API/Prodduct.UnitTest/obj/",
+      "outputPath": "/Users/yixuanfeng/Documents/GitHub/AntraAssignment/eShop.API/Product.UnitTest/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/yixuanfeng/.nuget/NuGet/NuGet.Config"

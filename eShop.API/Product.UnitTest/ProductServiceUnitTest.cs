@@ -3,7 +3,7 @@ using eShop.ApplicationCore.Entities;
 using eShop.ApplicationCore.Interface.Repository;
 using eShop.ApplicationCore.Interface.Service;
 
-namespace Prodduct.UnitTest;
+namespace Product.UnitTest;
 
 public class ProductServiceUnitTest
 {
@@ -24,12 +24,12 @@ public class ProductServiceUnitTest
 
 public class MockProductRepository : IProductRepositoryAsync
 {
-    public Task<int> InsertAsync(Product entity)
+    public Task<int> InsertAsync(eShop.ApplicationCore.Entities.Product entity)
     {
         throw new NotImplementedException();
     }
 
-    public Task<int> UpdateAsync(Product entity)
+    public Task<int> UpdateAsync(eShop.ApplicationCore.Entities.Product entity)
     {
         throw new NotImplementedException();
     }
@@ -39,21 +39,21 @@ public class MockProductRepository : IProductRepositoryAsync
         throw new NotImplementedException();
     }
 
-    public async Task<IEnumerable<Product>> GetAllAsync()
+    public async Task<IEnumerable<eShop.ApplicationCore.Entities.Product>> GetAllAsync()
     {
-        var result = new List<Product>
+        var result = new List<eShop.ApplicationCore.Entities.Product>
         {
 
         };
         return result;
     }
 
-    public Task<Product> GetByIdAsync(int id)
+    public Task<eShop.ApplicationCore.Entities.Product> GetByIdAsync(int id)
     {
         throw new NotImplementedException();
     }
 
-    public Task<IEnumerable<Product>> Filter(Expression<Func<Product, bool>> filter)
+    public Task<IEnumerable<eShop.ApplicationCore.Entities.Product>> Filter(Expression<Func<eShop.ApplicationCore.Entities.Product, bool>> filter)
     {
         throw new NotImplementedException();
     }
