@@ -26,13 +26,13 @@ public class ProductController : ControllerBase
         return Ok(await _productServiceAsync.GetAllProduct());
     }
 
-    [HttpGet("{name}")]
+    [HttpGet(template: "byname/{name}")]
     public async Task<IActionResult> GetProductByName(string name)
     {
         return Ok(await _productServiceAsync.GetProductByName(name));
     }
 
-    [HttpGet("{id}")]
+    [HttpGet(template: "byid/{id:int}")]
     public async Task<IActionResult> GetProductById(int id)
     {
         return Ok(await _productServiceAsync.GetProductById(id));
