@@ -7,7 +7,7 @@ on:
     branches: 
       [ main ]
     paths:
-    - 'eShop.API/**'
+    - 'eShop.API/Product/**'
     - '.github/workflows/productcontainer-AutoDeployTrigger-e99c1fff-0f89-4dbb-8ee6-2580e35f5b36.yml'
 
   # Allow manual trigger 
